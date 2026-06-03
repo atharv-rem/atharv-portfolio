@@ -137,3 +137,23 @@
     @apply font-sans;
   }
 }
+
+.dashed-grid {
+  background-image: linear-gradient(to right, #e7e5e4 1px, transparent 1px), linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 0;
+  mask-image: repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px);
+  -webkit-mask-image: repeating-linear-gradient(to right, black 0px, black 3px, transparent 3px, transparent 8px), repeating-linear-gradient(to bottom, black 0px, black 3px, transparent 3px, transparent 8px);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+.dot-grid {
+  --dot-bg: white;
+  --dot-color: #8c8c8c;
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background: linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+              linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+              var(--dot-color);
+}

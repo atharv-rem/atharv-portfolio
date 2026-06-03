@@ -2,7 +2,8 @@
 
 import { DitherShader } from "@/components/ui/dither-shader";
 import {motion} from "motion/react"
-import {useState} from "react";
+import {useState,useEffect} from "react";
+import LoadingThreeDotsJumping from "./loading-dots";
 
 const segments = [
   ["Full-stack ", true],
@@ -19,22 +20,81 @@ const segments = [
 
 export default function Hero() {
   const [hovered, setHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [city, setCity] = useState("");
+  const [flag, setFlag] = useState("");
+  const [greeting, setGreeting] = useState("Hi visitor");
+
+  useEffect(() => {
+    const hour = new Date().getHours();
+
+    if (hour < 12) {
+      setGreeting("Good morning");
+    } else if (hour < 17) {
+      setGreeting("Good afternoon");
+    } else {
+      setGreeting("Good evening");
+    }
+
+    async function getCity() {
+      try {
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        
+        const res = await fetch("/api/city_name", { cache: "no-store" });
+
+        if (res.ok) {
+          const data = await res.json();
+          setCity(data.city);
+          setFlag(data.flag);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    getCity();
+  }, []);
+  
   return (
     <div className="flex flex-col items-left justify-end h-screen w-full "> 
-        <div className="relative overflow-hidden rounded-[10px] border-[2px] border-[#9f9f9f] dark:border-neutral-800 w-[150px] h-[150px] mb-2 hero-image-shadow ml-[5px]">
-          <DitherShader
-            src="/hero image.png"
-            gridSize={1}
-            ditherMode="bayer"
-            colorMode="grayscale"
-            invert={false}
-            animated={false}
-            animationSpeed={0.02}
-            primaryColor="#000000"
-            secondaryColor="#f5f5f5"
-            threshold={0.5}
-            className=""
-          />
+        <div className="relative">
+          <div className="absolute top-8 left-[140px] z-10">
+            <div className="relative bg-white rounded-[80px] px-3 py-2 shadow-md border border-neutral-200 text-[#3b3b3b] font-open min-h-[38px] min-w-[80px] flex items-center justify-center">
+              {isLoading ? (
+                <LoadingThreeDotsJumping />
+              ) : (
+                <span className="whitespace-nowrap flex items-center gap-1.5">
+                  {city ? (
+                    <>
+                      Hi visitor from {city}
+                      {flag && <img src={flag} alt="flag" className="w-5 h-auto rounded-sm object-cover" />}
+                    </>
+                  ) : (
+                    greeting
+                  )}
+                </span>
+              )}
+
+              <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45 border-l border-b border-neutral-200" />
+            </div>
+          </div>
+
+          <div className="relative overflow-hidden rounded-[10px] border-[2px] border-[#9f9f9f] dark:border-neutral-800 w-[150px] h-[150px] mb-2 hero-image-shadow ml-[5px]">
+            <DitherShader
+              src="/hero image.png"
+              gridSize={1}
+              ditherMode="bayer"
+              colorMode="grayscale"
+              invert={false}
+              animated={false}
+              animationSpeed={0.02}
+              primaryColor="#000000"
+              secondaryColor="#f5f5f5"
+              threshold={0.5}
+            />
+          </div>
         </div>
         <div className="text-[clamp(4.5rem,17vw,80px)] font-heuvel uppercase text-black  mb-[-40px] md:mb-[-50px] hero-text-shadow">
             Atharv
@@ -43,30 +103,30 @@ export default function Hero() {
             Remeshan
         </div>
         <div
-      className="text-[clamp(1rem,5vw,18px)] font-open text-left mt-[-20px] mb-[10px] leading-[1.2]"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {segments.map(([text, isBold], i) => (
-        <motion.span
-            key={i}
-            animate={{
-            fontWeight: isBold && hovered ? 700 : 400,
-            color: hovered
-                ? isBold ? "#000000" : "#b0b0b0"
-                : "#626262",
-            }}
-            transition={{
-            duration: 0.22,
-            delay: hovered ? i * 0.04 : 0,
-            ease: "easeOut",
-            }}
-            style={{ display: "inline" }}
+          className="text-[clamp(1rem,5vw,18px)] font-open text-left mt-[-20px] mb-[10px] leading-[1.2]"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
-            {text}
-        </motion.span>
-        ))}
-    </div>
+          {segments.map(([text, isBold], i) => (
+            <motion.span
+                key={i}
+                animate={{
+                fontWeight: isBold && hovered ? 700 : 400,
+                color: hovered
+                    ? isBold ? "#000000" : "#b0b0b0"
+                    : "#626262",
+                }}
+                transition={{
+                duration: 0.22,
+                delay: hovered ? i * 0.04 : 0,
+                ease: "easeOut",
+                }}
+                style={{ display: "inline" }}
+            >
+                {text}
+            </motion.span>
+            ))}
+        </div>
     </div>
   );
 }
