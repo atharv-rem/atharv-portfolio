@@ -4,8 +4,8 @@ export default function Language() {
   return (
     <div className="flex flex-col w-full py-4">
         {/* Languages Header */}
-        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200" />
-        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 justify-start px-3 flex items-center">
+        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />
+        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 dark:border-neutral-800 justify-start px-3 flex items-center">
           languages
         </div>
         
@@ -20,8 +20,8 @@ export default function Language() {
         </div>
 
         {/* Frontend Header */}
-        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200" />
-        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 flex flex-row items-center justify-start px-3 leading-none">
+        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200 dark:border-neutral-800" />
+        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 dark:border-neutral-800 flex flex-row items-center justify-start px-3 leading-none">
           frontend
         </div>
         
@@ -36,8 +36,8 @@ export default function Language() {
         </div>
 
         {/* state and data */}
-        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200" />
-        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 flex items-center justify-start px-3 leading-none">
+        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200 dark:border-neutral-800" />
+        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3 leading-none">
           state and data
         </div>
         <div className="flex flex-wrap gap-2 py-4">
@@ -46,8 +46,8 @@ export default function Language() {
           <ElectricSQLPill />
         </div>
         {/* backend and db */}
-        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200" />
-        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 flex items-center justify-start px-3 leading-none">
+        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200 dark:border-neutral-800" />
+        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3 leading-none">
           backend and db
         </div>
         <div className="flex flex-wrap gap-2 py-4">      
@@ -60,8 +60,8 @@ export default function Language() {
         </div>
 
           {/*design*/}
-        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200" />
-        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 flex items-center justify-start px-3 leading-none">
+        <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-t border-b border-neutral-200 dark:border-neutral-800" />
+        <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3 leading-none">
           design
         </div>
         <div className="flex flex-wrap gap-2 py-4">

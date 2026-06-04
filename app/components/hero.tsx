@@ -4,6 +4,7 @@
 import { DitherShader } from "@/components/ui/dither-shader";
 import {motion} from "motion/react"
 import {useState,useEffect} from "react";
+import { useTheme } from "next-themes";
 import LoadingThreeDotsJumping from "./loading-dots";
 import Image from "next/image";
 import { ResumeDrawer } from "./resume-drawer";
@@ -41,6 +42,9 @@ export default function Hero() {
   const [city, setCity] = useState("");
   const [flag, setFlag] = useState("");
   const [greeting] = useState(getGreeting);
+  const { resolvedTheme } = useTheme();
+
+  const isDark = resolvedTheme === "dark";
 
   useEffect(() => {
     async function getCity() {
@@ -66,13 +70,13 @@ export default function Hero() {
   
   return (
     <div className="flex flex-col items-left justify-end h-screen w-full relative" > 
-        <div className="absolute top-0 left-1/2 z-20 h-[20px] w-[calc(100%+2rem)] max-w-[450px] -translate-x-1/2 pattern-hatch border-b border-neutral-200" />
-        <div className="absolute uppercase top-[20px] left-1/2 font-open text-[15px] text-[#cfcfcf] bg-white z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-neutral-200 flex items-center justify-start px-3">
+        <div className="absolute top-0 left-1/2 z-20 h-[20px] w-[calc(100%+2rem)] max-w-[450px] -translate-x-1/2 pattern-hatch border-b border-neutral-200 dark:border-neutral-800" />
+        <div className="absolute uppercase top-[20px] left-1/2 font-open text-[15px] text-[#cfcfcf] bg-white dark:bg-neutral-900 z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3">
           intro
         </div>
         <div className="relative">
           <div className="absolute top-8 left-[140px] z-10">
-            <div className="relative bg-white rounded-[80px] px-4 shadow-md border border-neutral-200 border-2 text-[#3b3b3b] font-open min-h-[38px] min-w-[80px] flex items-center justify-center">
+            <div className="relative bg-white dark:bg-neutral-900 rounded-[80px] px-4 shadow-md border border-neutral-200 dark:border-neutral-800 border-2 text-[#3b3b3b] dark:text-neutral-200 font-open min-h-[38px] min-w-[80px] flex items-center justify-center">
               {isLoading ? (
                 <LoadingThreeDotsJumping />
               ) : (
@@ -88,7 +92,7 @@ export default function Hero() {
                 </span>
               )}
 
-              <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rotate-45 border-l border-b border-neutral-200" />
+              <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-neutral-900 rotate-45 border-l border-b border-neutral-200 dark:border-neutral-800" />
             </div>
           </div>
 
@@ -101,16 +105,16 @@ export default function Hero() {
               invert={false}
               animated={false}
               animationSpeed={0.02}
-              primaryColor="#000000"
-              secondaryColor="#f5f5f5"
+              primaryColor={isDark ? "#ffffff" : "#000000"}
+              secondaryColor={isDark ? "#171717" : "#f5f5f5"}
               threshold={0.5}
             />
           </div>
         </div>
-        <div className="text-[clamp(4.5rem,17vw,80px)] font-heuvel uppercase text-[#3b3b3b]  mb-[-40px] md:mb-[-50px] hero-text-shadow">
+        <div className="text-[clamp(4.5rem,17vw,80px)] font-heuvel uppercase text-[#3b3b3b] dark:text-neutral-200 mb-[-40px] md:mb-[-50px] hero-text-shadow">
             Atharv
         </div>
-        <div className="text-[clamp(4rem,18.5vw,80px)] font-heuvel uppercase text-[#3b3b3b] hero-text-shadow">
+        <div className="text-[clamp(4rem,18.5vw,80px)] font-heuvel uppercase text-[#3b3b3b] dark:text-neutral-200 hero-text-shadow">
             Remeshan
         </div>
 
@@ -125,8 +129,8 @@ export default function Hero() {
                 animate={{
                 fontWeight: isBold && hovered ? 700 : 400,
                 color: hovered
-                    ? isBold ? "#000000" : "#b0b0b0"
-                    : "#626262",
+                    ? isBold ? (isDark ? "#ffffff" : "#000000") : (isDark ? "#525252" : "#b0b0b0")
+                    : (isDark ? "#a3a3a3" : "#626262"),
                 }}
                 transition={{
                 duration: 0.22,
@@ -136,8 +140,8 @@ export default function Hero() {
                 style={{ display: "inline" }}
             >
                 {text}
-            </motion.span>
-            ))}
+             </motion.span>
+             ))}
         </div>
         
         <div className="flex flex-wrap gap-2 mt-4 mb-4">
