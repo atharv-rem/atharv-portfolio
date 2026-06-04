@@ -1,16 +1,10 @@
 "use client";
 
+// removed SVG imports
 import { DitherShader } from "@/components/ui/dither-shader";
 import {motion} from "motion/react"
 import {useState,useEffect} from "react";
 import LoadingThreeDotsJumping from "./loading-dots";
-import github_dark from "@/public/GitHub_dark.svg";
-import github_light from "@/public/GitHub_light.svg";
-import instagram from "@/public/instagram.svg";
-import linkedin from "@/public/linkedin.svg";
-import twitter_dark from "@/public/X_dark.svg";
-import twitter_light from "@/public/X_light.svg";
-import resume from "@/public/resume.svg";
 import Image from "next/image";
 
 const segments = [
@@ -27,10 +21,10 @@ const segments = [
 ];
 
 const socials = [
-  { label: "GitHub", href: "https://github.com/atharv-rem", iconDark: github_dark, iconLight: github_light },
-  { label: "Twitter", href: "https://x.com/atharv_rem", iconDark: twitter_dark, iconLight: twitter_light },
-  { label: "Instagram", href: "https://www.instagram.com/atharv_remeshan/", iconDark: instagram, iconLight: instagram },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/atharv-rem/", iconDark: linkedin, iconLight: linkedin },
+  { label: "GitHub", href: "https://github.com/atharv-rem", iconDark: "/GitHub_light.svg", iconLight: "/GitHub_dark.svg" },
+  { label: "Twitter", href: "https://x.com/atharv_rem", iconDark: "/twitter_light.svg", iconLight: "/twitter_dark.svg" },
+  { label: "Instagram", href: "https://www.instagram.com/atharv_remeshan/", iconDark: "/instagram_light.svg", iconLight: "/instagram_dark.svg" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/atharv-rem/", iconDark: "/linkedin_light.svg", iconLight: "/linkedin_dark.svg" },
 ];
 
 function getGreeting() {
@@ -88,7 +82,7 @@ export default function Hero() {
   return (
     <div className="flex flex-col items-left justify-end h-screen w-full relative" > 
         <div className="absolute top-0 left-1/2 z-20 h-[40px] w-[calc(100%+2rem)] max-w-[450px] -translate-x-1/2 pattern-hatch border-b border-neutral-200" />
-        <div className="absolute uppercase top-11 left-1/2 font-open text-[15px] text-[#cfcfcf] bg-white z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-neutral-200 flex items-center justify-left px-4 leading-0">
+        <div className="absolute uppercase top-11 left-1/2 font-open text-[15px] text-[#cfcfcf] bg-white z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-neutral-200 flex items-center justify-start px-3 leading-none">
           intro
         </div>
         <div className="relative">
@@ -128,10 +122,10 @@ export default function Hero() {
             />
           </div>
         </div>
-        <div className="text-[clamp(4.5rem,17vw,80px)] font-heuvel uppercase text-black  mb-[-40px] md:mb-[-50px] hero-text-shadow">
+        <div className="text-[clamp(4.5rem,17vw,80px)] font-heuvel uppercase text-[#3b3b3b]  mb-[-40px] md:mb-[-50px] hero-text-shadow">
             Atharv
         </div>
-        <div className="text-[clamp(4rem,18.5vw,80px)] font-heuvel uppercase text-black hero-text-shadow">
+        <div className="text-[clamp(4rem,18.5vw,80px)] font-heuvel uppercase text-[#3b3b3b] hero-text-shadow">
             Remeshan
         </div>
 
@@ -185,7 +179,6 @@ export default function Hero() {
                 className="hidden dark:block"
               />
               {label}
-              <span className="text-neutral-400 text-xs">›</span>
             </a>
           ))}
 
@@ -195,21 +188,20 @@ export default function Hero() {
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
           >
             <Image
-              src={resume}
+              src="/resume_dark.svg"
               alt="Resume"
               width={16}
               height={16}
               className="block dark:hidden"
             />
             <Image
-              src={resume}
+              src="/resume_light.svg"
               alt="Resume"
               width={16}
               height={16}
               className="hidden dark:block"
             />
             Resume
-            <span className="text-neutral-400 text-xs">↓</span>
           </a>
         </div>
     </div>

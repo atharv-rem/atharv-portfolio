@@ -159,12 +159,16 @@
 }
 
 .pattern-hatch {
-  background-color: #ffffff;
-  background-image: repeating-linear-gradient(
-    -45deg,
-    #909090,
-    #909090 1px,
-    transparent 1px,
-    transparent 8px
-  );
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      rgba(155, 155, 155, 0.3) 0px,
+      rgba(155, 155, 155, 0.3) 1px,
+      transparent 1px,
+      transparent 8px
+    );
+}
+
+@utility link-underline {
+    @apply underline decoration-current/30 decoration-1 underline-offset-3 transition-colors hover:decoration-current;
 }
