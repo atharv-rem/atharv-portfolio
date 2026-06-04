@@ -43,7 +43,18 @@ export default function RootLayout({  children,}: Readonly<{children: React.Reac
       lang="en"
       suppressHydrationWarning
       className={cn("h-full", "antialiased", heuvel.variable, opensauce.variable, "font-sans", inter.variable)}
+      
     >
+      <head>
+        <script
+          src="https://cdn.databuddy.cc/databuddy.js"
+          data-client-id="a61ec3c4-9d1e-4349-81d4-a70a31236005"
+          data-track-outgoing-links="true"
+          data-track-performance="false"
+          crossOrigin="anonymous"
+          async
+        ></script>
+      </head>
         <body>
           <Provider>
           <TooltipProvider>

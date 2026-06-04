@@ -50,7 +50,7 @@ export function BottomNavbar() {
           animate={{ y: 0, x: "-50%", opacity: 1 }}
           exit={{ y: 80, x: "-50%", opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-6 left-1/2 z-50 flex items-center justify-between gap-6 px-6 py-3 rounded-full bg-neutral-950/90 dark:bg-white/90 backdrop-blur-md border border-neutral-800 dark:border-neutral-200 shadow-xl w-[calc(100%-2rem)] max-w-[360px]"
+          className="fixed bottom-6 left-1/2 z-50 flex items-center justify-between gap-6 px-6 py-3 rounded-full bg-neutral-950/90 dark:bg-[#696969] backdrop-blur-md border border-neutral-800 shadow-xl w-[calc(100%-2rem)] max-w-[400px]"
         >
           <div className="flex items-center justify-around flex-1">
             {navItems.map((item) => (
@@ -59,7 +59,7 @@ export function BottomNavbar() {
                 href={item.url}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="font-open text-[11px] font-medium uppercase tracking-wider text-neutral-400 hover:text-white dark:text-neutral-500 dark:hover:text-black transition-colors cursor-pointer select-none"
+                className="font-open text-[11px] font-medium uppercase tracking-wider text-neutral-400 hover:text-white dark:text-white dark:hover:text-black transition-colors cursor-pointer select-none"
               >
                 {item.name}
               </motion.a>

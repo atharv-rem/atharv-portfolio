@@ -1,6 +1,7 @@
 import Hero from "./components/hero"
 import GitHubPage from "./components/github_page"
 import Language from "./components/language"
+import Contact from "@/components/contact"
 import { BottomNavbar } from "./components/bottom-navbar"
 
 export default async function Home() {
@@ -11,6 +12,7 @@ export default async function Home() {
         <Hero />
         <GitHubPage />
         <Language />
+        <Contact />
         <BottomNavbar />
       </div>
     </main>
