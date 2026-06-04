@@ -6,10 +6,6 @@ import {motion} from "motion/react"
 import {useState,useEffect} from "react";
 import LoadingThreeDotsJumping from "./loading-dots";
 import Image from "next/image";
-import { GithubDrawer } from "./github-drawer";
-import { TwitterDrawer } from "./twitter-drawer";
-import { InstagramDrawer } from "./instagram-drawer";
-import { LinkedinDrawer } from "./linkedin-drawer";
 import { ResumeDrawer } from "./resume-drawer";
 
 const segments = [
@@ -145,10 +141,94 @@ export default function Hero() {
         </div>
         
         <div className="flex flex-wrap gap-2 mt-4 mb-4">
-          <GithubDrawer />
-          <TwitterDrawer />
-          <InstagramDrawer />
-          <LinkedinDrawer />
+          <a
+            href="https://github.com/atharv-rem"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          >
+            <Image
+              src="/GitHub_dark.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/GitHub_light.svg"
+              alt="GitHub"
+              width={16}
+              height={16}
+              className="hidden dark:block"
+            />
+            GitHub
+          </a>
+          <a
+            href="https://x.com/atharv_rem"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          >
+            <Image
+              src="/twitter_dark.svg"
+              alt="Twitter"
+              width={16}
+              height={16}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/twitter_light.svg"
+              alt="Twitter"
+              width={16}
+              height={16}
+              className="hidden dark:block"
+            />
+            Twitter
+          </a>
+          <a
+            href="https://www.instagram.com/atharv_remeshan/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          >
+            <Image
+              src="/instagram_dark.svg"
+              alt="Instagram"
+              width={16}
+              height={16}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/instagram_light.svg"
+              alt="Instagram"
+              width={16}
+              height={16}
+              className="hidden dark:block"
+            />
+            Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/in/atharv-rem/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          >
+            <Image
+              src="/linkedin_dark.svg"
+              alt="LinkedIn"
+              width={16}
+              height={16}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/linkedin_light.svg"
+              alt="LinkedIn"
+              width={16}
+              height={16}
+              className="hidden dark:block"
+            />
+            LinkedIn
+          </a>
           <ResumeDrawer />
         </div>
     </div>

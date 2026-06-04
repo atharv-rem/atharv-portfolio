@@ -1,5 +1,6 @@
 import Hero from "./components/hero"
 import GitHubPage from "./components/github_page"
+import Language from "./components/language"
 
 export default async function Home() {
   return (
@@ -8,6 +9,7 @@ export default async function Home() {
       <div className="bg-white flex min-h-screen flex-col items-center justify-between w-full max-w-[450px] px-4 border-l border-r relative z-10">
         <Hero />
         <GitHubPage />
+        <Language />
       </div>
     </main>
   );
