@@ -6,6 +6,11 @@ import {motion} from "motion/react"
 import {useState,useEffect} from "react";
 import LoadingThreeDotsJumping from "./loading-dots";
 import Image from "next/image";
+import { GithubDrawer } from "./github-drawer";
+import { TwitterDrawer } from "./twitter-drawer";
+import { InstagramDrawer } from "./instagram-drawer";
+import { LinkedinDrawer } from "./linkedin-drawer";
+import { ResumeDrawer } from "./resume-drawer";
 
 const segments = [
   ["Full-stack ", true],
@@ -18,13 +23,6 @@ const segments = [
   [", and creating ", false],
   ["impactful user experiences", true],
   [".", false],
-];
-
-const socials = [
-  { label: "GitHub", href: "https://github.com/atharv-rem", iconDark: "/GitHub_light.svg", iconLight: "/GitHub_dark.svg" },
-  { label: "Twitter", href: "https://x.com/atharv_rem", iconDark: "/twitter_light.svg", iconLight: "/twitter_dark.svg" },
-  { label: "Instagram", href: "https://www.instagram.com/atharv_remeshan/", iconDark: "/instagram_light.svg", iconLight: "/instagram_dark.svg" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/atharv-rem/", iconDark: "/linkedin_light.svg", iconLight: "/linkedin_dark.svg" },
 ];
 
 function getGreeting() {
@@ -69,15 +67,6 @@ export default function Hero() {
 
     getCity();
   }, []);
-  
-  const handleResumeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const downloadLink = document.createElement("a");
-    downloadLink.href = "/resume.pdf";
-    downloadLink.download = "Atharv_Remeshan_Resume.pdf";
-    downloadLink.click();
-    window.open("/resume.pdf", "_blank", "noopener,noreferrer");
-  };
   
   return (
     <div className="flex flex-col items-left justify-end h-screen w-full relative" > 
@@ -156,53 +145,11 @@ export default function Hero() {
         </div>
         
         <div className="flex flex-wrap gap-2 mt-4 mb-4">
-          {socials.map(({ label, href, iconDark, iconLight }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
-            >
-              <Image
-                src={iconLight}
-                alt={label}
-                width={16}
-                height={16}
-                className="block dark:hidden"
-              />
-              <Image
-                src={iconDark}
-                alt={label}
-                width={16}
-                height={16}
-                className="hidden dark:block"
-              />
-              {label}
-            </a>
-          ))}
-
-          <a
-            href="/resume.pdf"
-            onClick={handleResumeClick}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
-          >
-            <Image
-              src="/resume_dark.svg"
-              alt="Resume"
-              width={16}
-              height={16}
-              className="block dark:hidden"
-            />
-            <Image
-              src="/resume_light.svg"
-              alt="Resume"
-              width={16}
-              height={16}
-              className="hidden dark:block"
-            />
-            Resume
-          </a>
+          <GithubDrawer />
+          <TwitterDrawer />
+          <InstagramDrawer />
+          <LinkedinDrawer />
+          <ResumeDrawer />
         </div>
     </div>
   );
