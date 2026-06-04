@@ -9,7 +9,7 @@ type GitHubContributionsResponse = {
 export const getCachedContributions = unstable_cache(
   async (username: string) => {
     const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${username}?y=last`
+      `${process.env.GITHUB_CONTRIBUTIONS_API_URL || `https://github-contributions-api.jogruber.de`}/v4/${username}?y=2026&y=2025`
     )
     const data = (await res.json()) as GitHubContributionsResponse
     return data.contributions
