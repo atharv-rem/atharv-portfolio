@@ -25,15 +25,39 @@ export function BottomNavbar() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
-      if (window.scrollY > 200) {
+      const githubHeader = document.getElementById("github-header");
+      const contactElement = document.getElementById("contact");
+
+      if (!githubHeader || !contactElement) return;
+
+      const githubRect = githubHeader.getBoundingClientRect();
+      const contactRect = contactElement.getBoundingClientRect();
+
+      // Immediately appear when the header of github page is on screen
+      const githubOnScreenOrPast = githubRect.top < window.innerHeight;
+
+      // Hide when you reach the end of the contact page
+      // We use a buffer of 120px, or check if the scroll has reached the bottom of the page
+      const reachedEndOfContact =
+        contactRect.bottom <= window.innerHeight + 120 ||
+        (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20);
+
+      if (githubOnScreenOrPast && !reachedEndOfContact) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Run once on mount to handle initial scroll state
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
   }, []);
 
   const navItems = [

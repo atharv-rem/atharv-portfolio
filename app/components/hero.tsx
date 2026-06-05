@@ -71,7 +71,7 @@ export default function Hero() {
   return (
     <div className="flex flex-col items-left justify-end h-screen w-full relative" > 
         <div className="absolute top-0 left-1/2 z-20 h-[20px] w-[calc(100%+2rem)] max-w-[450px] -translate-x-1/2 pattern-hatch border-b border-neutral-200 dark:border-neutral-800" />
-        <div className="absolute uppercase top-[20px] left-1/2 font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3">
+        <div className="absolute uppercase top-[20px] left-1/2 font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 z-10 w-[calc(100%+2rem)] h-[30px] max-w-[450px] -translate-x-1/2 border-b border-l border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3">
           intro
         </div>
         <div className="relative">
