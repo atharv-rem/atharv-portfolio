@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const SunIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-400 hover:text-white dark:text-neutral-500 dark:hover:text-black transition-colors">
@@ -18,6 +19,9 @@ const MoonIcon = () => (
 );
 
 export function BottomNavbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const [isVisible, setIsVisible] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -25,6 +29,12 @@ export function BottomNavbar() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => {
+      if (!isHome) {
+        const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
+        setIsVisible(!reachedBottom);
+        return;
+      }
+
       const githubHeader = document.getElementById("github-header");
       const contactElement = document.getElementById("contact");
 
@@ -58,12 +68,12 @@ export function BottomNavbar() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [isHome]);
 
   const navItems = [
-    { name: "projects", url: "#projects" },
-    { name: "blog", url: "#blog" },
-    { name: "contact me", url: "#contact" },
+    { name: "projects", url: isHome ? "#projects" : "/#projects" },
+    { name: "blog", url: "/blog" },
+    { name: "contact me", url: isHome ? "#contact" : "/#contact" },
   ];
 
   return (
