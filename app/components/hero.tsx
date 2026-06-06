@@ -40,7 +40,6 @@ export default function Hero() {
   const [hovered, setHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [city, setCity] = useState("");
-  const [flag, setFlag] = useState("");
   const [greeting] = useState(getGreeting);
   const { resolvedTheme } = useTheme();
 
@@ -56,7 +55,6 @@ export default function Hero() {
         if (res.ok) {
           const data = await res.json();
           setCity(data.city);
-          setFlag(data.flag);
         }
       } catch (error) {
         console.error(error);
@@ -84,7 +82,6 @@ export default function Hero() {
                   {city ? (
                     <>
                       Hi visitor from {city}
-                      {flag && <img src={flag} alt="flag" className="w-5 h-auto rounded-sm object-cover" />}
                     </>
                   ) : (
                     greeting
