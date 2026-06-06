@@ -1,20 +1,41 @@
-import { NextResponse, NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  // Vercel automatically populates geolocation headers on deployment
-  const cityHeader = request.headers.get("x-vercel-ip-city");
-  const countryHeader = request.headers.get("x-vercel-ip-country");
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const realIp = request.headers.get("x-real-ip");
 
-  // Fallback for local development or when headers are missing
-  const city = cityHeader ? decodeURIComponent(cityHeader) : "";
-  const countryCode = countryHeader ? countryHeader.toLowerCase() : "";
+  const ip =
+    forwardedFor?.split(",")[0].trim() ||
+    realIp ||
+    "";
 
-  const flag = countryCode ? `https://cdn.ipwho.is/flags/${countryCode}.svg` : "";
-  console.log(`City: ${city}, Country Code: ${countryCode}`);
-  return NextResponse.json({
-    city,
-    flag,
-  });
+  if (!ip) {
+    return NextResponse.json({
+      city: null,
+      flag: null,
+    });
+  }
+
+  try {
+    const res = await fetch(`https://ipwho.is/${ip}`, {
+      cache: "no-store",
+    });
+
+    const data = await res.json();
+
+    return NextResponse.json({
+      city: data?.city ?? null,
+      flag: data?.flag?.img ?? null,
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        city: null,
+        flag: null,
+      },
+      { status: 500 }
+    );
+  }
 }
