@@ -5,18 +5,6 @@ import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 
-const SunIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-400 hover:text-white dark:text-neutral-500 dark:hover:text-black transition-colors">
-    <circle cx="12" cy="12" r="4"/>
-    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
-  </svg>
-);
-
-const MoonIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-neutral-400 hover:text-white dark:text-neutral-500 dark:hover:text-black transition-colors">
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-  </svg>
-);
 
 export function BottomNavbar() {
   const pathname = usePathname();
@@ -47,7 +35,6 @@ export function BottomNavbar() {
       const githubOnScreenOrPast = githubRect.top < window.innerHeight;
 
       // Hide when you reach the end of the contact page
-      // We use a buffer of 120px, or check if the scroll has reached the bottom of the page
       const reachedEndOfContact =
         contactRect.bottom <= window.innerHeight + 120 ||
         (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20);
@@ -71,9 +58,30 @@ export function BottomNavbar() {
   }, [isHome]);
 
   const navItems = [
-    { name: "projects", url: isHome ? "#projects" : "/#projects" },
-    { name: "blog", url: "/blog" },
-    { name: "contact me", url: isHome ? "#contact" : "/#contact" },
+    {
+      name: "home",
+      url: "/",
+      iconLight: "/home_light.svg",
+      iconDark: "/home_dark.svg"
+    },
+    {
+      name: "projects",
+      url: "/projects",
+      iconLight: "/folder_light.svg",
+      iconDark: "/folder_dark.svg"
+    },
+    {
+      name: "blog",
+      url: "/blog",
+      iconLight: "/blog_light.svg",
+      iconDark: "/blog_dark.svg"
+    },
+    {
+      name: "contact me",
+      url: "/#contact",
+      iconLight: "/contact_light.svg",
+      iconDark: "/contact_dark.svg"
+    },
   ];
 
   return (
@@ -84,35 +92,49 @@ export function BottomNavbar() {
           animate={{ y: 0, x: "-50%", opacity: 1 }}
           exit={{ y: 80, x: "-50%", opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-6 left-1/2 z-50 flex items-center justify-between gap-6 px-6 py-3 rounded-full bg-neutral-950/90 dark:bg-[#696969] backdrop-blur-md border border-neutral-800 shadow-xl w-[calc(100%-2rem)] max-w-[400px]"
+          className="fixed bottom-6 left-1/2 z-50 flex items-center justify-between gap-5 px-5 py-2.5 rounded-[10px] bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] w-[calc(100%-2.5rem)] max-w-[380px]"
         >
-          <div className="flex items-center justify-around flex-1">
+          <div className="flex items-center justify-around flex-1 gap-4">
             {navItems.map((item) => (
               <motion.a
                 key={item.name}
                 href={item.url}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="font-open text-[11px] font-medium uppercase tracking-wider text-neutral-400 hover:text-white dark:text-white dark:hover:text-black transition-colors cursor-pointer select-none"
+                whileHover={{ scale: 1.12 }}
+                whileTap={{ scale: 0.92 }}
+                className="flex items-center justify-center p-1.5 rounded-[6px] cursor-pointer select-none"
+                title={item.name}
               >
-                {item.name}
+                <img
+                  src={mounted && resolvedTheme === "dark" ? item.iconDark : item.iconLight}
+                  alt={item.name}
+                  className="w-6 h-6 object-contain"
+                />
               </motion.a>
             ))}
           </div>
 
-          <div className="w-[1px] h-4 bg-neutral-800 dark:bg-neutral-200" />
+          <div className="w-[1.5px] h-5 bg-neutral-300 dark:bg-neutral-800" />
 
           <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.12 }}
+            whileTap={{ scale: 0.92 }}
             onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center p-1 rounded-full cursor-pointer focus:outline-none"
+            className="flex items-center justify-center p-1.5 rounded-[6px] cursor-pointer focus:outline-none"
             aria-label="Toggle dark mode"
           >
-            {mounted ? resolvedTheme === "dark" ? <SunIcon /> : <MoonIcon /> : <div className="w-[14px] h-[14px]" />}
+            {mounted ? (
+              resolvedTheme === "dark" ? (
+                <img src="/sun.svg" alt="Light Mode" className="w-5 h-5 object-contain invert" />
+              ) : (
+                <img src="/moon.svg" alt="Dark Mode" className="w-5 h-5 object-contain invert" />
+              )
+            ) : (
+              <div className="w-[20px] h-[20px]" />
+            )}
           </motion.button>
         </motion.div>
       )}
     </AnimatePresence>
   );
 }
+

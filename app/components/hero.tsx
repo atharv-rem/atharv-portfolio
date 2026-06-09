@@ -149,14 +149,14 @@ export default function Hero() {
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
           >
             <Image
-              src="/GitHub_dark.svg"
+              src="/GitHub_light.svg"
               alt="GitHub"
               width={16}
               height={16}
               className="block dark:hidden"
             />
             <Image
-              src="/GitHub_light.svg"
+              src="/GitHub_dark.svg"
               alt="GitHub"
               width={16}
               height={16}
@@ -171,14 +171,14 @@ export default function Hero() {
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
           >
             <Image
-              src="/twitter_dark.svg"
+              src="/twitter_light.svg"
               alt="Twitter"
               width={16}
               height={16}
               className="block dark:hidden"
             />
             <Image
-              src="/twitter_light.svg"
+              src="/twitter_dark.svg"
               alt="Twitter"
               width={16}
               height={16}
@@ -215,20 +215,42 @@ export default function Hero() {
             className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
           >
             <Image
-              src="/linkedin_dark.svg"
+              src="/linkedin_light.svg"
               alt="LinkedIn"
               width={16}
               height={16}
               className="block dark:hidden"
             />
             <Image
-              src="/linkedin_light.svg"
+              src="/linkedin_dark.svg"
               alt="LinkedIn"
               width={16}
               height={16}
               className="hidden dark:block"
             />
             LinkedIn
+          </a>
+          <a
+            href="https://www.threads.com/@atharv_remeshan"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer"
+          >
+            <Image
+              src="/threads_light.svg"
+              alt="Threads"
+              width={16}
+              height={16}
+              className="block dark:hidden"
+            />
+            <Image
+              src="/threads_dark.svg"
+              alt="Threads"
+              width={16}
+              height={16}
+              className="hidden dark:block"
+            />
+            Threads
           </a>
           <ResumeDrawer />
         </div>

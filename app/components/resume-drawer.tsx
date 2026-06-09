@@ -26,7 +26,7 @@ export function ResumeDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <button className="flex items-center px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer">
+        <button className="flex items-center px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer gap-2">
           <Image
             src="/resume_dark.svg"
             alt="Resume"
