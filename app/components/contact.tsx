@@ -42,7 +42,7 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="flex flex-col w-full relative pb-20">
+    <div id="contact" className="flex flex-col w-full relative pb-10">
       {/* Contact Header */}
       <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />
       <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 justify-start px-3 flex items-center mb-6">

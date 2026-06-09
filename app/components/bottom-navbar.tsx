@@ -6,13 +6,14 @@ import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 
 
-export function BottomNavbar() {
+export default function BottomNavbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
   const [isVisible, setIsVisible] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -77,7 +78,7 @@ export function BottomNavbar() {
       iconDark: "/blog_dark.svg"
     },
     {
-      name: "contact me",
+      name: "contact",
       url: "/#contact",
       iconLight: "/contact_light.svg",
       iconDark: "/contact_dark.svg"
@@ -87,52 +88,78 @@ export function BottomNavbar() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <motion.div
-          initial={{ y: 80, x: "-50%", opacity: 0 }}
-          animate={{ y: 0, x: "-50%", opacity: 1 }}
-          exit={{ y: 80, x: "-50%", opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed bottom-6 left-1/2 z-50 flex items-center justify-between gap-5 px-5 py-2.5 rounded-[10px] bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] w-[calc(100%-2.5rem)] max-w-[380px]"
-        >
-          <div className="flex items-center justify-around flex-1 gap-4">
-            {navItems.map((item) => (
-              <motion.a
-                key={item.name}
-                href={item.url}
-                whileHover={{ scale: 1.12 }}
-                whileTap={{ scale: 0.92 }}
-                className="flex items-center justify-center p-1.5 rounded-[6px] cursor-pointer select-none"
-                title={item.name}
-              >
-                <img
-                  src={mounted && resolvedTheme === "dark" ? item.iconDark : item.iconLight}
-                  alt={item.name}
-                  className="w-6 h-6 object-contain"
-                />
-              </motion.a>
-            ))}
-          </div>
-
-          <div className="w-[1.5px] h-5 bg-neutral-300 dark:bg-neutral-800" />
-
-          <motion.button
-            whileHover={{ scale: 1.12 }}
-            whileTap={{ scale: 0.92 }}
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-            className="flex items-center justify-center p-1.5 rounded-[6px] cursor-pointer focus:outline-none"
-            aria-label="Toggle dark mode"
+        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none">
+          <motion.div
+            layout
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{
+              layout: { type: "spring", stiffness: 350, damping: 30 },
+              opacity: { duration: 0.2 },
+              y: { duration: 0.3, ease: "easeOut" }
+            }}
+            className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-2.5 rounded-[10px] bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] w-auto max-w-[90vw]"
           >
-            {mounted ? (
-              resolvedTheme === "dark" ? (
-                <img src="/sun.svg" alt="Light Mode" className="w-5 h-5 object-contain invert" />
+            <div className="flex items-center justify-center gap-2">
+              {navItems.map((item, index) => {
+                const isHovered = hoveredIndex === index;
+                return (
+                  <motion.a
+                    key={item.name}
+                    href={item.url}
+                    layout
+                    onHoverStart={() => setHoveredIndex(index)}
+                    onHoverEnd={() => setHoveredIndex(null)}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-1.5 p-2 rounded-[6px] cursor-pointer select-none bg-transparent hover:bg-neutral-100/60 dark:hover:bg-neutral-900/60 transition-colors"
+                  >
+                    <motion.img
+                      layout
+                      src={mounted && resolvedTheme === "dark" ? item.iconDark : item.iconLight}
+                      alt={item.name}
+                      className="w-5 h-5 object-contain"
+                      style={{ width: "auto", height: "auto" }}
+                    />
+                    <AnimatePresence initial={false}>
+                      {isHovered && (
+                        <motion.span
+                          initial={{ opacity: 0, width: 0, marginLeft: 0 }}
+                          animate={{ opacity: 1, width: "auto", marginLeft: 4 }}
+                          exit={{ opacity: 0, width: 0, marginLeft: 0 }}
+                          transition={{ duration: 0.2, ease: "easeInOut" }}
+                          className="overflow-hidden whitespace-nowrap text-sm font-semibold tracking-wide text-neutral-800 dark:text-neutral-200 capitalize pr-1 font-open"
+                        >
+                          {item.name}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </motion.a>
+                );
+              })}
+            </div>
+
+            <div className="w-[1px] h-4 bg-neutral-300 dark:bg-neutral-800" />
+
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+              className="flex items-center justify-center p-2 rounded-[6px] cursor-pointer focus:outline-none bg-transparent hover:bg-neutral-100/60 dark:hover:bg-neutral-900/60 transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {mounted ? (
+                resolvedTheme === "dark" ? (
+                  <img src="/sun.svg" alt="Light Mode" className="w-5 h-5 object-contain invert" style={{ width: "auto", height: "auto" }} />
+                ) : (
+                  <img src="/moon.svg" alt="Dark Mode" className="w-5 h-5 object-contain invert" style={{ width: "auto", height: "auto" }} />
+                )
               ) : (
-                <img src="/moon.svg" alt="Dark Mode" className="w-5 h-5 object-contain invert" />
-              )
-            ) : (
-              <div className="w-[20px] h-[20px]" />
-            )}
-          </motion.button>
-        </motion.div>
+                <div className="w-[20px] h-[20px]" />
+              )}
+            </motion.button>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   );

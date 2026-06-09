@@ -2,9 +2,8 @@ import Hero from "./components/hero"
 import GitHubPage from "./components/github_page"
 import Language from "./components/language"
 import Contact from "./components/contact"
-import FluidGradientText from "@/app/components/fluid-gradient-text"
-
-import { BottomNavbar } from "./components/bottom-navbar"
+import Footer from "./components/footer"
+import BottomNavbar from "./components/bottom-navbar"
 
 export default async function Home() {
   return (
@@ -16,11 +15,7 @@ export default async function Home() {
         <Language />
         <Contact />
         <BottomNavbar />
-        <FluidGradientText
-          text="atharv"
-          svgViewBoxWidth={450}
-          svgViewBoxHeight={150}
-        />
+        <Footer />
       </div>
     </main>
   );
