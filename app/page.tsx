@@ -3,7 +3,7 @@ import GitHubPage from "./components/github_page"
 import Language from "./components/language"
 import Contact from "./components/contact"
 import Footer from "./components/footer"
-import BottomNavbar from "./components/bottom-navbar"
+import { BottomNavbar } from "./components/bottom-navbar"
 
 export default async function Home() {
   return (

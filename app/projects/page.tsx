@@ -1,4 +1,4 @@
-import BottomNavbar from "../components/bottom-navbar";
+import { BottomNavbar } from "../components/bottom-navbar";
 
 export default function Projects() {
   return (
