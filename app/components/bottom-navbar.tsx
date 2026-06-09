@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
 
 
-export default function BottomNavbar() {
+export function BottomNavbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
 
