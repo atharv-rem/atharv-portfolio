@@ -38,8 +38,9 @@ export async function getLatestCommit() {
         username: `${process.env.GITHUB_USERNAME}`,
       },
     }),
+    cache: "no-store",
     next: {
-      revalidate: 300,
+      revalidate: 0,
     },
   });
 
