@@ -121,8 +121,8 @@ export default async function Projects() {
                         )}
                         {repo.url && (
                           <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800 border-[1px] border-neutral-400 dark:border-neutral-600">
-                            <Image src="/github_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
-                            <Image src="/github_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
+                            <Image src="/GitHub_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
+                            <Image src="/GitHub_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                           </a>
                         )}
                       </div>
@@ -212,8 +212,8 @@ export default async function Projects() {
                         )}
                         {repo.url && (
                           <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800 border-[1px] border-neutral-400 dark:border-neutral-600">
-                            <Image src="/github_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
-                            <Image src="/github_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
+                            <Image src="/GitHub_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
+                            <Image src="/GitHub_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                           </a>
                         )}
                       </div>
