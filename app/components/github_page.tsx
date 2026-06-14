@@ -34,8 +34,8 @@ export default function GitHubPage() {
                   <Image
                     src="/merge_dark.svg"
                     alt="Git Activity Graphic"
-                    width={16}
-                    height={16}
+                    width={14}
+                    height={14}
                     className="hidden dark:block object-contain"
                   />
                   <p className="text-[12px] text-black dark:text-neutral-500 font-open">

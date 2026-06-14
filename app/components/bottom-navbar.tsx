@@ -17,6 +17,10 @@ export function BottomNavbar() {
 
   useEffect(() => {
     setMounted(true);
+    if (pathname === "/projects") {
+      setIsVisible(true);
+      return;
+    }
     const handleScroll = () => {
       if (!isHome) {
         const reachedBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20;
@@ -56,7 +60,7 @@ export function BottomNavbar() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, [isHome]);
+  }, [pathname]);
 
   const navItems = [
     {

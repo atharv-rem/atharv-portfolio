@@ -95,7 +95,7 @@ export default function Hero() {
 
           <div className="relative overflow-hidden rounded-[10px] border-[2px] border-[#9f9f9f] dark:border-neutral-800 w-[150px] h-[150px] mb-2 hero-image-shadow ml-[10px]">
             <DitherShader
-              src="/hero image.png"
+              src="/hero image.avif"
               gridSize={1}
               ditherMode="bayer"
               colorMode="grayscale"
