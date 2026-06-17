@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/copilot-extensions/api-catalog/main/schema.json",
+  "title": "Atharv Remeshan Portfolio API Catalog",
+  "description": "API endpoints available on Atharv Remeshan's portfolio site.",
+  "endpoints": [
+    {
+      "path": "/api/city_name",
+      "method": "GET",
+      "description": "Identifies the visitor's city using geographical lookup."
+    },
+    {
+      "path": "/api/contact",
+      "method": "POST",
+      "description": "Receives contact form submissions."
+    }
+  ]
+}
