@@ -17,7 +17,7 @@ export function BottomNavbar() {
 
   useEffect(() => {
     setMounted(true);
-    if (pathname === "/projects") {
+    if (pathname === "/projects" || pathname?.startsWith("/blog")) {
       setIsVisible(true);
       return;
     }

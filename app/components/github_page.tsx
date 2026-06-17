@@ -3,11 +3,10 @@ import GithubContributions from "./github_graph";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 
-const repo = await getLatestCommit();
-const commit = repo.defaultBranchRef.target;
-const commitDate = new Date(commit.committedDate);
-  
-export default function GitHubPage() {
+export default async function GitHubPage() {
+  const repo = await getLatestCommit();
+  const commit = repo.defaultBranchRef.target;
+  const commitDate = new Date(commit.committedDate);
   return (
     <div className="flex flex-col w-full relative">
         <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />

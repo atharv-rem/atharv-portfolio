@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/drawer";
 
 export function ResumeDrawer() {
-  const handleResumeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleResumeClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     const downloadLink = document.createElement("a");
     downloadLink.href = "/resume.pdf";
@@ -46,26 +46,18 @@ export function ResumeDrawer() {
       </DrawerTrigger>
       <DrawerContent className="mx-auto w-full max-w-[450px]">
         <DrawerHeader className="text-left">
-          <DrawerTitle>Resume</DrawerTitle>
-          <DrawerDescription>View or download my resume</DrawerDescription>
+          <DrawerTitle className="hidden">Resume</DrawerTitle>
+          <DrawerDescription className="hidden">View or download my resume</DrawerDescription>
         </DrawerHeader>
         
-        <div className="p-4 flex flex-col items-center justify-center py-8">
-          <a
-            href="/resume.pdf"
-            onClick={handleResumeClick}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors shadow-sm"
-          >
-            Download Resume
-          </a>
+        <div className="absolute w-full flex flex-col items-center justify-center bottom-13">
+          <Image src="/resume_light.png" alt="Resume Preview" width={200} height={150} className="rounded-[10px] border border-neutral-200 dark:border-neutral-700 dark:hidden block shadow-md" />
+          <Image src="/resume_dark.png" alt="Resume Preview" width={200} height={150} className="rounded-[10px] border border-neutral-200 dark:border-neutral-700 dark:block hidden shadow-md" />
         </div>
-        
-        <DrawerFooter className="pt-2">
-          <DrawerClose asChild>
-            <button className="px-4 py-3 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer">
-              Close
+        <DrawerFooter>
+            <button onClick={handleResumeClick} className="px-4 py-3 z-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer">
+              download resume
             </button>
-          </DrawerClose>
         </DrawerFooter>
       </DrawerContent>
     </Drawer>

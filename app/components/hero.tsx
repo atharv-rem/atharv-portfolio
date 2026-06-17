@@ -48,6 +48,13 @@ export default function Hero() {
   useEffect(() => {
     async function getCity() {
       try {
+        const cachedCity = localStorage.getItem("city_name");
+        if (cachedCity) {
+          setCity(cachedCity);
+          setIsLoading(false);
+          return;
+        }
+
         await new Promise((resolve) => setTimeout(resolve, 2000));
         
         const res = await fetch("/api/city_name", { cache: "no-store" });
@@ -55,6 +62,9 @@ export default function Hero() {
         if (res.ok) {
           const data = await res.json();
           setCity(data.city);
+          if (data.city) {
+            localStorage.setItem("city_name", data.city);
+          }
         }
       } catch (error) {
         console.error(error);

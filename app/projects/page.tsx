@@ -1,7 +1,13 @@
+import type { Metadata } from "next";
 import { BottomNavbar } from "../components/bottom-navbar";
 import {getProjects} from "@/lib/get-repo-details"
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Explore featured and experimental projects built by Atharv Remeshan, showcasing engineering, design, and system architecture.",
+};
 import { 
   TypeScriptPill, JavaScriptPill, GoPill, CPill, PythonPill, ReactPill, 
   AstroPill, TailwindPill, HTMLPill, CSSPill, ZustandPill, TanStackPill, 
@@ -86,7 +92,7 @@ export default async function Projects() {
                 {featured.map((repo) => (
                   <div key = {repo.id} className="flex flex-col gap-1 p-3 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors w-full">
                     <div className="flex flex-row justify-between items-center">
-                      <div className="flex flex-row items-center gap-2">
+                      <div className="flex flex-row items-center gap-1">
                         <Image src="/repo_light.svg" alt="Repository" width={14} height={14} className="block dark:hidden" />
                         <Image src="/repo_dark.svg" alt="Repository" width={14} height={14} className="hidden dark:block" />
                         <h2 className="text-[12px] font-open text-[#3b3b3b] dark:text-neutral-200">{repo.name}</h2>
@@ -113,14 +119,14 @@ export default async function Projects() {
                       </div>
                       <div className="flex flex-row items-center gap-2">
                         {repo.homepageUrl && (
-                          <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[1px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800">
+                          <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[1px] px-[5px] rounded-[5px] border border-[#e7e7e7] dark:border-neutral-600 dark:bg-neutral-800">
                             <Image src="/external_link_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
                             <Image src="/external_link_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">live</p>
                           </a>
                         )}
                         {repo.url && (
-                          <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800 border-[1px] border-neutral-400 dark:border-neutral-600">
+                          <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] dark:bg-neutral-800 border-[1px] border-[#e7e7e7] dark:border-neutral-600">
                             <Image src="/GitHub_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
                             <Image src="/GitHub_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                           </a>
@@ -177,7 +183,7 @@ export default async function Projects() {
                 {experimental.map((repo) => (
                   <div key = {repo.id} className="flex flex-col gap-1 p-3 border border-neutral-200 dark:border-neutral-800 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors w-full">
                     <div className="flex flex-row justify-between items-center">
-                      <div className="flex flex-row items-center gap-2">
+                      <div className="flex flex-row items-center gap-1">
                         <Image src="/repo_light.svg" alt="Repository" width={14} height={14} className="block dark:hidden" />
                         <Image src="/repo_dark.svg" alt="Repository" width={14} height={14} className="hidden dark:block" />
                         <h2 className="text-[12px] font-open text-[#3b3b3b] dark:text-neutral-200">{repo.name}</h2>
@@ -204,14 +210,14 @@ export default async function Projects() {
                       </div>
                       <div className="flex flex-row items-center gap-2">
                         {repo.homepageUrl && (
-                          <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[1px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800">
+                          <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[1px] px-[5px] rounded-[5px] border border-[#e7e7e7] dark:border-neutral-600  dark:bg-neutral-800">
                             <Image src="/external_link_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
                             <Image src="/external_link_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                             <p className="text-sm text-neutral-600 dark:text-neutral-400">live</p>
                           </a>
                         )}
                         {repo.url && (
-                          <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] bg-[#efefef] dark:bg-neutral-800 border-[1px] border-neutral-400 dark:border-neutral-600">
+                          <a href={repo.url} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[5px] px-[5px] rounded-[5px] dark:bg-neutral-800 border-[1px] border-[#e7e7e7] dark:border-neutral-600">
                             <Image src="/GitHub_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
                             <Image src="/GitHub_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
                           </a>

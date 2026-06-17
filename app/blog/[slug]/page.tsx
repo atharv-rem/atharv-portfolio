@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
@@ -115,6 +116,20 @@ function renderMarkdown(content: string) {
 type Props = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostData(slug);
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+  return {
+    title: post.title,
+    description: post.excerpt || `Read ${post.title} by Atharv Remeshan`,
+  };
+}
 
 export default async function BlogPost({ params }: Props) {
   const { slug } = await params;
