@@ -84,8 +84,12 @@ export default async function Projects() {
           <h1 className="text-[clamp(4.5rem,17vw,50px)] font-heuvel uppercase text-[#3b3b3b] dark:text-neutral-200 mt-[10px]">Projects</h1>
           <Tabs defaultValue="tab-1" className="w-full">
             <TabsList>
-              <TabsTab value="tab-1">Featured</TabsTab>
-              <TabsTab value="tab-2">Experimental</TabsTab>
+              <TabsTab value="tab-1" className="font-open text-[12px] text-[#3b3b3b] dark:text-neutral-200">
+                Featured
+              </TabsTab>
+              <TabsTab value="tab-2" className="font-open text-[12px] text-[#3b3b3b] dark:text-neutral-200">
+                Experimental
+              </TabsTab>
             </TabsList>
             <TabsPanel value="tab-1">
               <div className="flex flex-col gap-4 mt-4">
@@ -122,7 +126,7 @@ export default async function Projects() {
                           <a href={repo.homepageUrl} target="_blank" rel="noopener noreferrer" className="flex flex-row items-center gap-1 py-[1px] px-[5px] rounded-[5px] border border-[#e7e7e7] dark:border-neutral-600 dark:bg-neutral-800">
                             <Image src="/external_link_dark.svg" alt="External Link" width={12} height={12} className="ml-auto dark:block hidden" />
                             <Image src="/external_link_light.svg" alt="External Link" width={12} height={12} className="ml-auto dark:hidden block" />
-                            <p className="text-sm text-neutral-600 dark:text-neutral-400">live</p>
+                            <p className="text-sm text-black dark:text-white">live</p>
                           </a>
                         )}
                         {repo.url && (
@@ -145,8 +149,8 @@ export default async function Projects() {
                       {repo.defaultBranchRef?.target && (
                         <>
                           <div className="flex flex-row items-center gap-2">
-                            <Image src="/merge_light.svg" alt="Repository Stats" width={14} height={14} className="dark:hidden block" />
-                            <Image src="/merge_dark.svg" alt="Repository Stats" width={14} height={14} className="dark:block hidden" />
+                            <Image src="/merge_light.svg" alt="Repository Stats" width={13} height={13} className="dark:hidden block" />
+                            <Image src="/merge_dark.svg" alt="Repository Stats" width={13} height={13} className="dark:block hidden" />
                             <p className="text-[12px] font-mono text-neutral-600 dark:text-neutral-400 bg-[#efefef] dark:bg-neutral-800 px-[8px] py-[1px] rounded-[5px] font-semibold">
                               {repo.defaultBranchRef.target.oid.slice(0, 7)}
                             </p>

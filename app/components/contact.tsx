@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import Image from "next/image";
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -62,7 +63,7 @@ export default function Contact() {
             required
             value={formData.name}
             onChange={handleChange}
-            placeholder="Your name"
+            placeholder="John Doe"
             disabled={status === "loading"}
             className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-sm font-open text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors disabled:opacity-50"
           />
@@ -80,7 +81,7 @@ export default function Contact() {
             required
             value={formData.email}
             onChange={handleChange}
-            placeholder="Your email address"
+            placeholder="john.doe@example.com"
             disabled={status === "loading"}
             className="w-full px-4 py-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-sm font-open text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors disabled:opacity-50"
           />
@@ -98,7 +99,7 @@ export default function Contact() {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            placeholder="Your message..."
+            placeholder="Yo atharv we are working on a project and we need your help. Can you please reach out to us?"
             disabled={status === "loading"}
             className="w-full px-4 py-3 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-sm font-open text-neutral-800 dark:text-neutral-100 placeholder-neutral-400 focus:outline-none focus:border-neutral-400 dark:focus:border-neutral-600 transition-colors resize-none disabled:opacity-50"
           />
@@ -128,26 +129,45 @@ export default function Contact() {
           )}
         </AnimatePresence>
 
-        {/* Submit Button */}
-        <motion.button
-          whileHover={{ scale: status === "loading" ? 1 : 1.01 }}
-          whileTap={{ scale: status === "loading" ? 1 : 0.99 }}
-          type="submit"
-          disabled={status === "loading"}
-          className="w-full mt-2 py-3 px-4 rounded-xl bg-[#dddddd] dark:bg-[#5a5a5a] text-black dark:text-white font-open text-[15px] font-medium hover:bg-neutral-850 dark:hover:bg-neutral-100 transition-colors cursor-pointer select-none flex items-center justify-center gap-2 disabled:opacity-50"
-        >
-          {status === "loading" ? (
-            <>
-              <svg className="animate-spin h-4 w-4 text-white dark:text-neutral-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Sending...
-            </>
-          ) : (
-            "Send Message"
-          )}
-        </motion.button>
+        {/* buttons */}
+        <div className="flex flex-row gap-5">
+          <button onClick={() => window.open('https://cal.com/atharv-rem', '_blank')} className="flex items-center justify-center gap-2 w-full mt-2 py-3 px-4 rounded-xl text-[15px] text-black dark:text-white font-open font-medium border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 py-2 w-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none">
+          <Image
+            src="/tea_dark.svg"
+            alt="Contact Image"
+            width={20}
+            height={20}
+            className="dark:block hidden"
+          />
+          <Image
+            src="/tea_light.svg"
+            alt="Contact Image"
+            width={20}
+            height={20}
+            className="block dark:hidden"
+          />
+          <span>Jump on a call</span>
+          </button>
+          <motion.button
+            whileHover={{ scale: status === "loading" ? 1 : 1.01 }}
+            whileTap={{ scale: status === "loading" ? 1 : 0.99 }}
+            type="submit"
+            disabled={status === "loading"}
+            className="w-full mt-2 py-3 px-4 rounded-xl bg-[#dddddd] dark:bg-[#5a5a5a] text-black dark:text-white font-open text-[15px] font-medium hover:bg-neutral-850 dark:hover:bg-neutral-100 transition-colors cursor-pointer select-none flex items-center justify-center gap-2 disabled:opacity-50"
+          >
+            {status === "loading" ? (
+              <>
+                <svg className="animate-spin h-4 w-4 text-white dark:text-neutral-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Sending...
+              </>
+            ) : (
+              "Send Message"
+            )}
+          </motion.button>
+        </div>
       </form>
     </div>
   );

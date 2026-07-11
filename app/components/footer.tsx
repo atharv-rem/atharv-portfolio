@@ -6,6 +6,8 @@ import { useTheme } from "next-themes";
 import FluidGradientText from "@/app/components/fluid-gradient-text";
 import mumbaiLight from "@/public/mumbai_light.png";
 import mumbaiDark from "@/public/mumbai_dark.png";
+import blr_light from "@/public/blr_light.png";
+import blr_dark from "@/public/blr_dark.png";
 
 export default function Footer() {
   const { resolvedTheme } = useTheme();
@@ -25,8 +27,9 @@ export default function Footer() {
   return (
     <footer className="w-full h-auto flex flex-col items-center justify-center border-neutral-200 dark:border-neutral-800 relative">
       <div className="h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
-      <div className="flex flex-col items-start justify-center w-full py-3">
+      <div className="flex flex-col items-start justify-center w-full py-3 space-y-1">
         <div className="flex flex-row items-center justify-center gap-2">
+            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">I live in </p>
             <Image
               src={mounted && resolvedTheme === "dark" ? mumbaiDark : mumbaiLight}
               alt="Mumbai"
@@ -35,11 +38,19 @@ export default function Footer() {
               className="object-contain"
               style={{ width: "auto", height: "auto" }}
             />
-            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">Mumbai</p>
+            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">Mumbai and work in </p>
+            <Image
+              src={mounted && resolvedTheme === "dark" ? blr_dark : blr_light}
+              alt="Bangalore"
+              width={40}
+              height={40}
+              className="object-contain"
+            />
+            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">Bangalore</p>
         </div>
         <div>
           {mounted && now ? (
-            <time className="text-[13px] font-open text-neutral-400 m">
+            <time className="text-[15px] font-open text-neutral-400 m">
               {now.toLocaleString("en-IN", {
                 timeZone: "Asia/Kolkata",
                 dateStyle: "medium",
