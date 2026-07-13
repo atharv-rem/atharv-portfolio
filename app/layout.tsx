@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Provider from "./components/theme-provider";
-import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip"
-
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const heuvel = localFont({
   src:"./assets/font/Heuvel grotesk.ttf",
@@ -79,7 +76,7 @@ export default function RootLayout({  children,}: Readonly<{children: React.Reac
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("h-full", "antialiased", heuvel.variable, opensauce.variable, "font-sans", inter.variable)}
+      className={cn("h-full", "antialiased", heuvel.variable, opensauce.variable, "font-sans")}
       
     >
       <head>

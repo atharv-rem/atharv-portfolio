@@ -76,47 +76,62 @@ const EXPERIMENTAL = {
 };
 
 export async function getProjects() {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GET_PORTFOLIO_PROJECTS,
-      variables: {
-        username: `${process.env.GITHUB_USERNAME}`,
+  try {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+        "Content-Type": "application/json",
       },
-    }),
-    next: {
-      revalidate: 86400, //24hours
-    },
-  });
+      body: JSON.stringify({
+        query: GET_PORTFOLIO_PROJECTS,
+        variables: {
+          username: `${process.env.GITHUB_USERNAME}`,
+        },
+      }),
+      next: {
+        revalidate: 86400, //24hours
+      },
+      signal: AbortSignal.timeout(3000),
+    });
 
-  const json = await response.json();
+    if (!response.ok) {
+      return {
+        featured: [],
+        experimental: [],
+      };
+    }
 
-  const data =
-    json.data as GitHubProjectsResponse;
+    const json = await response.json();
 
-  const repos =
-    data.user.repositories.nodes;
+    const data =
+      json.data as GitHubProjectsResponse;
 
-  const featured = repos
-    .filter((repo) => FEATURED.hasOwnProperty(repo.name))
-    .map((repo) => ({
-      ...repo,
-      languagesList: FEATURED[repo.name as keyof typeof FEATURED] || [],
-    }));
+    const repos =
+      data.user.repositories.nodes;
 
-  const experimental = repos
-    .filter((repo) => EXPERIMENTAL.hasOwnProperty(repo.name))
-    .map((repo) => ({
-      ...repo,
-      languagesList: EXPERIMENTAL[repo.name as keyof typeof EXPERIMENTAL] || [],
-    }));
+    const featured = repos
+      .filter((repo) => FEATURED.hasOwnProperty(repo.name))
+      .map((repo) => ({
+        ...repo,
+        languagesList: FEATURED[repo.name as keyof typeof FEATURED] || [],
+      }));
 
-  return {
-    featured,
-    experimental,
-  };
+    const experimental = repos
+      .filter((repo) => EXPERIMENTAL.hasOwnProperty(repo.name))
+      .map((repo) => ({
+        ...repo,
+        languagesList: EXPERIMENTAL[repo.name as keyof typeof EXPERIMENTAL] || [],
+      }));
+
+    return {
+      featured,
+      experimental,
+    };
+  } catch {
+    return {
+      featured: [],
+      experimental: [],
+    };
+  }
 }
