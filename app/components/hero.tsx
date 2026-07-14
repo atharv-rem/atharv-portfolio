@@ -40,7 +40,7 @@ export default function Hero() {
   const [hovered, setHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [city, setCity] = useState("");
-  const [flag, setFlag] = useState("");
+  const [country, setCountry] = useState("");
   const [greeting] = useState(getGreeting);
   const { resolvedTheme } = useTheme();
 
@@ -50,10 +50,10 @@ export default function Hero() {
     async function getCity() {
       try {
         const cachedCity = sessionStorage.getItem("city_name");
-        const cachedFlag = sessionStorage.getItem("city_flag");
+        const cachedCountry = sessionStorage.getItem("city_country");
         if (cachedCity) {
           setCity(cachedCity);
-          setFlag(cachedFlag || "");
+          setCountry(cachedCountry || "");
           setIsLoading(false);
           return;
         }
@@ -65,10 +65,10 @@ export default function Hero() {
         if (res.ok) {
           const data = await res.json();
           setCity(data.city);
-          setFlag(data.flag || "");
+          setCountry(data.country || "");
           if (data.city) {
             sessionStorage.setItem("city_name", data.city);
-            sessionStorage.setItem("city_flag", data.flag || "");
+            sessionStorage.setItem("city_country", data.country || "");
           }
         }
       } catch (error) {
@@ -95,9 +95,18 @@ export default function Hero() {
               ) : (
                 <span className="whitespace-nowrap flex items-center gap-1.5">
                   {city ? (
-                    <>
-                      Hi visitor from {city} {flag}
-                    </>
+                    <span className="flex items-center gap-1.5">
+                      Hi visitor from {city}
+                      {country && (
+                        <img
+                          src={`https://flagcdn.com/16x12/${country}.png`}
+                          width="16"
+                          height="12"
+                          alt=""
+                          className="rounded-xs object-contain inline-block align-middle"
+                        />
+                      )}
+                    </span>
                   ) : (
                     greeting
                   )}
