@@ -44,19 +44,34 @@ export function ResumeDrawer() {
           Resume
         </button>
       </DrawerTrigger>
-      <DrawerContent className="mx-auto w-full max-w-[450px]">
+
+      <DrawerContent className="mx-auto w-full max-w-[450px] shadow-2xl">
         <DrawerHeader className="text-left">
           <DrawerTitle className="hidden">Resume</DrawerTitle>
           <DrawerDescription className="hidden">View or download my resume</DrawerDescription>
         </DrawerHeader>
         
-        <div className="absolute w-full flex flex-col items-center justify-center bottom-13">
+        <div className="absolute w-full flex flex-col items-center justify-center bottom-14">
           <Image src="/resume_light.png" alt="Resume Preview" width={200} height={150} className="rounded-[10px] border border-neutral-200 dark:border-neutral-700 dark:hidden block shadow-md" />
           <Image src="/resume_dark.png" alt="Resume Preview" width={200} height={150} className="rounded-[10px] border border-neutral-200 dark:border-neutral-700 dark:block hidden shadow-md" />
         </div>
         <DrawerFooter>
-            <button onClick={handleResumeClick} className="px-4 py-3 z-10 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-sm font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer">
-              download resume
+            <button onClick={handleResumeClick} className="px-4 py-3 z-10 flex flex-row items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[15px] font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer">
+              <Image
+                src="/pdf_light.svg"
+                alt="Download"
+                width={20}
+                height={20}
+                className="mr-2 block dark:hidden"
+              />
+              <Image 
+                src="/pdf_dark.svg"
+                alt="Download"
+                width={20}
+                height={20}
+                className="mr-2 hidden dark:block"
+              />
+              <p>download resume</p>
             </button>
         </DrawerFooter>
       </DrawerContent>

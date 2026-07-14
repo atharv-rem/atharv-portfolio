@@ -40,6 +40,7 @@ export default function Hero() {
   const [hovered, setHovered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [city, setCity] = useState("");
+  const [flag, setFlag] = useState("");
   const [greeting] = useState(getGreeting);
   const { resolvedTheme } = useTheme();
 
@@ -48,9 +49,11 @@ export default function Hero() {
   useEffect(() => {
     async function getCity() {
       try {
-        const cachedCity = localStorage.getItem("city_name");
+        const cachedCity = sessionStorage.getItem("city_name");
+        const cachedFlag = sessionStorage.getItem("city_flag");
         if (cachedCity) {
           setCity(cachedCity);
+          setFlag(cachedFlag || "");
           setIsLoading(false);
           return;
         }
@@ -62,8 +65,10 @@ export default function Hero() {
         if (res.ok) {
           const data = await res.json();
           setCity(data.city);
+          setFlag(data.flag || "");
           if (data.city) {
-            localStorage.setItem("city_name", data.city);
+            sessionStorage.setItem("city_name", data.city);
+            sessionStorage.setItem("city_flag", data.flag || "");
           }
         }
       } catch (error) {
@@ -91,7 +96,7 @@ export default function Hero() {
                 <span className="whitespace-nowrap flex items-center gap-1.5">
                   {city ? (
                     <>
-                      Hi visitor from {city}
+                      Hi visitor from {city} {flag}
                     </>
                   ) : (
                     greeting

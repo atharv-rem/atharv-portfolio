@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import FluidGradientText from "@/app/components/fluid-gradient-text";
+import { Signature } from "@/components/ui/signature";
 import mumbaiLight from "@/public/mumbai_light.png";
 import mumbaiDark from "@/public/mumbai_dark.png";
 import blr_light from "@/public/blr_light.png";
@@ -24,10 +24,12 @@ export default function Footer() {
     return () => clearInterval(timer);
   }, []);
 
+  const signatureColor = mounted && resolvedTheme === "dark" ? "#d4d4d4" : "#525252";
+
   return (
     <footer className="w-full h-auto flex flex-col items-center justify-center border-neutral-200 dark:border-neutral-800 relative">
       <div className="h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
-      <div className="flex flex-col items-start justify-center w-full py-3 space-y-1">
+      <div className="flex flex-col items-start justify-center w-full py-3 space-y-1 mb-[20px]">
         <div className="flex flex-row items-center justify-center gap-2">
             <p className="text-[15px] font-open text-neutral-400 mt-[5px]">I live in </p>
             <Image
@@ -58,14 +60,17 @@ export default function Footer() {
               })}
             </time>
           ) : (
-            <span className="text-[13px] font-open text-neutral-400">...</span>
+            <span className="flex items-center space-x-1 py-1 h-[22.5px]">
+              <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-pulse [animation-delay:0ms]"></span>
+              <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-pulse [animation-delay:150ms]"></span>
+              <span className="h-1.5 w-1.5 bg-neutral-400 rounded-full animate-pulse [animation-delay:300ms]"></span>
+            </span>
           )}
         </div>
       </div>
-      <FluidGradientText
+      <Signature
         text="atharv"
-        svgViewBoxWidth={450}
-        svgViewBoxHeight={150}
+        color={signatureColor}
       />
     </footer>
   );

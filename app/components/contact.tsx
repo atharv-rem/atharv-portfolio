@@ -43,7 +43,7 @@ export default function Contact() {
   };
 
   return (
-    <div id="contact" className="flex flex-col w-full relative pb-10">
+    <div id="contact" className="flex flex-col w-full relative pb-5">
       {/* Contact Header */}
       <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />
       <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 justify-start px-3 flex items-center mb-6">
@@ -112,7 +112,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="text-xs text-green-600 dark:text-green-400 font-open mt-1"
+              className="text-[13px] text-[#10b981] dark:text-[#10b981] font-open"
             >
               Thank you! Your message has been sent successfully.
             </motion.div>
@@ -122,7 +122,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: -5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="text-xs text-red-600 dark:text-red-400 font-open mt-1"
+              className="text-[15px] text-red-600 dark:text-red-400 font-open"
             >
               {errorMessage}
             </motion.div>
@@ -130,8 +130,8 @@ export default function Contact() {
         </AnimatePresence>
 
         {/* buttons */}
-        <div className="flex flex-row gap-5">
-          <button onClick={() => window.open('https://cal.com/atharv-rem', '_blank')} className="flex items-center justify-center gap-2 w-full mt-2 py-3 px-4 rounded-xl text-[15px] text-black dark:text-white font-open font-medium border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 py-2 w-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none">
+        <div className="flex flex-row gap-x-5">
+          <button onClick={() => window.open('https://cal.com/atharv-rem', '_blank')} className="flex items-center justify-center bg-[#f5f5f5] dark:bg-[#353535] gap-2 w-full py-3 px-4 rounded-xl text-[15px] text-black dark:text-white font-open font-medium border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 py-2 w-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none">
           <Image
             src="/tea_dark.svg"
             alt="Contact Image"
@@ -153,7 +153,7 @@ export default function Contact() {
             whileTap={{ scale: status === "loading" ? 1 : 0.99 }}
             type="submit"
             disabled={status === "loading"}
-            className="w-full mt-2 py-3 px-4 rounded-xl bg-[#dddddd] dark:bg-[#5a5a5a] text-black dark:text-white font-open text-[15px] font-medium hover:bg-neutral-850 dark:hover:bg-neutral-100 transition-colors cursor-pointer select-none flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full py-3 px-4 rounded-xl text-black dark:text-white border font-open text-[15px] font-medium bg-[#f5f5f5] dark:bg-[#353535] hover:bg-neutral-100 border-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {status === "loading" ? (
               <>
@@ -161,10 +161,26 @@ export default function Contact() {
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
-                Sending...
+                <p>Sending...</p> 
               </>
             ) : (
-              "Send Message"
+              <>
+              <Image
+                src="/message_dark.svg"
+                alt="Send Icon"
+                width={20}
+                height={20}
+                className="dark:block hidden"
+              />
+              <Image
+                src="/message_light.svg"
+                alt="Send Icon"
+                width={20}
+                height={20}
+                className="block dark:hidden"
+              />
+              <p>Send Message</p>
+              </>
             )}
           </motion.button>
         </div>

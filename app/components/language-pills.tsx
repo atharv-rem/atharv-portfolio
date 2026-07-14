@@ -81,7 +81,7 @@ export function CSSPill(props: PillProps) {
 export function FigmaPill(props: PillProps) {
   return (
     <GenericPill {...props}>
-      <Image src="/Figma.svg" alt="Figma" width={16} height={16} className="object-contain" />
+      <Image src="/Figma.svg" alt="Figma" width={10} height={10} className="object-contain" />
       <span>Figma</span>
     </GenericPill>
   );
@@ -90,7 +90,7 @@ export function FigmaPill(props: PillProps) {
 export function GoPill(props: PillProps) {
   return (
     <GenericPill {...props}>
-      <Image src="/Go.svg" alt="Go" width={16} height={16} className="object-contain" />
+      <Image src="/Go.svg" alt="Go" width={13} height={13} className="object-contain" />
       <span>Go</span>
     </GenericPill>
   );
@@ -138,15 +138,15 @@ export function AstroPill(props: PillProps) {
       <Image
         src="/astro_dark.svg"
         alt="Astro"
-        width={16}
-        height={16}
+        width={13}
+        height={13}
         className="block dark:hidden object-contain"
       />
       <Image
         src="/astro_light.svg"
         alt="Astro"
-        width={16}
-        height={16}
+        width={13}
+        height={13}
         className="hidden dark:block object-contain"
       />
       <span>Astro</span>
@@ -203,18 +203,11 @@ export function TanStackPill(props: PillProps) {
   return (
     <GenericPill {...props}>
       <Image
-        src="/tanstack_black.svg"
+        src="/tanstack.svg"
         alt="TanStack"
         width={16}
         height={16}
-        className="block dark:hidden object-contain"
-      />
-      <Image
-        src="/tanstack_white.svg"
-        alt="TanStack"
-        width={16}
-        height={16}
-        className="hidden dark:block object-contain"
+        className="object-contain"
       />
       <span>TanStack</span>
     </GenericPill>
@@ -251,7 +244,7 @@ export function ZustandPill(props: PillProps) {
 export function PaperPill(props: PillProps) {
   return (
     <GenericPill {...props}>
-      <Image src="/paper.jpg" alt="Paper" width={16} height={16} className="object-contain rounded-sm" />
+      <Image src="/paper.svg" alt="Paper" width={13} height={13} className="object-contain rounded-sm" />
       <span>Paper</span>
     </GenericPill>
   );
@@ -261,18 +254,11 @@ export function JavaPill(props: PillProps) {
   return (
     <GenericPill {...props}>
       <Image
-        src="/java_light.svg"
+        src="/java.svg"
         alt="Java"
-        width={16}
-        height={16}
-        className="block dark:hidden object-contain"
-      />
-      <Image
-        src="/java_dark.svg"
-        alt="Java"
-        width={16}
-        height={16}
-        className="hidden dark:block object-contain"
+        width={14}
+        height={14}
+        className="object-contain"
       />
       <span>Java</span>
     </GenericPill>
