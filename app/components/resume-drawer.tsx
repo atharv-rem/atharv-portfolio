@@ -26,7 +26,7 @@ export function ResumeDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <button className="flex items-center px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer gap-2">
+        <button className="flex items-center px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm font-medium text-neutral-800 dark:text-neutral-100 hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors cursor-pointer gap-2" data-tone-tap>
           <Image
             src="/resume_dark.svg"
             alt="Resume"
@@ -56,7 +56,7 @@ export function ResumeDrawer() {
           <Image src="/resume_dark.png" alt="Resume Preview" width={200} height={150} className="rounded-[10px] border border-neutral-200 dark:border-neutral-700 dark:block hidden shadow-md" />
         </div>
         <DrawerFooter>
-            <button onClick={handleResumeClick} className="px-4 py-3 z-10 flex flex-row items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[15px] font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer">
+            <button onClick={handleResumeClick} className="px-4 py-3 z-10 flex flex-row items-center justify-center rounded-xl bg-neutral-100 dark:bg-neutral-800 text-[15px] font-medium hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors w-full cursor-pointer" data-tone-tap>
               <Image
                 src="/pdf_light.svg"
                 alt="Download"

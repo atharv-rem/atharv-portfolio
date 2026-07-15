@@ -1,31 +1,13 @@
 "use client"
 
-import { motion, Variants } from "motion/react"
-
 export default function LoadingThreeDotsJumping() {
-    const dotVariants: Variants = {
-        jump: {
-            transform: "translateY(-8px)",
-            transition: {
-                duration: 0.8,
-                repeat: Infinity,
-                repeatType: "mirror",
-                ease: "easeInOut",
-            },
-        },
-    }
-
     return (
-        <motion.div
-            animate="jump"
-            transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-            className="container"
-        >
-            <motion.div className="dot" variants={dotVariants} />
-            <motion.div className="dot" variants={dotVariants} />
-            <motion.div className="dot" variants={dotVariants} />
+        <div className="typing">
+            <span className="dot"></span>
+            <span className="dot"></span>
+            <span className="dot"></span>
             <StyleSheet />
-        </motion.div>
+        </div>
     )
 }
 
@@ -33,19 +15,29 @@ function StyleSheet() {
     return (
         <style>
             {`
-            .container {
+            .typing {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                gap: 10px;
+                gap: 5px;
+                height: 16px;
             }
 
-            .dot {
-                width: 8px;
-                height: 8px;
+            .typing .dot {
+                width: 6px;
+                height: 6px;
                 border-radius: 50%;
-                background-color: #3b3b3b;
-                will-change: transform;
+                background-color: currentColor;
+                will-change: transform, opacity;
+                animation: bounce 1.2s ease-in-out infinite;
+            }
+
+            .typing .dot:nth-child(2) { animation-delay: 0.16s; }
+            .typing .dot:nth-child(3) { animation-delay: 0.32s; }
+
+            @keyframes bounce {
+                0%, 60%, 100% { transform: translateY(0);    opacity: 0.4; }
+                30%           { transform: translateY(-7px); opacity: 1; }
             }
             `}
         </style>

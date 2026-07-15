@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 const heuvel = localFont({
-  src:"./assets/font/Heuvel grotesk.ttf",
+  src:"./assets/font/Heuvel grotesk.woff2",
   display: "swap",
   variable: "--font-heuvel",
 });
@@ -83,7 +83,6 @@ export default function RootLayout({  children,}: Readonly<{children: React.Reac
         <script
           src="https://cdn.databuddy.cc/databuddy.js"
           data-client-id="a61ec3c4-9d1e-4349-81d4-a70a31236005"
-          data-track-outgoing-links="true"
           data-track-performance="false"
           crossOrigin="anonymous"
           async

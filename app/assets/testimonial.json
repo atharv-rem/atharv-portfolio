@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Raymel Francisco",
+    "role": "Building AIs at 02AI.DEV",
+    "link": "https://x.com/pseudokid",
+    "fallback": "RF",
+    "content": "Atharv is one of those prodigies. Eager to learn, eager to do things. Fun to work with and understands how things work intuitively despite the lack of experience. At high school he already has an eye in design and knows how gen z marketing works. Even before taking CS he already shown flashes of talent. Won't be surprised if he gets into a startup soon and land in SF in the years to come."
+  },
+  {
+    "name": "Axyl",
+    "role": "Building Soralabs UI",
+    "fallback": "A",
+    "link": "https://github.com/axyl1410",
+    "content": "The live preview feature is an absolute game-changer. Being able to interact with the UI libraries directly on the platform without leaving the site makes the discovery process incredibly smooth. The minimalist dark aesthetic and clean grid layout also perfectly fit the developer/designer vibe. Thanks for building such a great directory!"
+  },
+  {
+    "name": "Ashish Das",
+    "role": "UI UX designer",
+    "fallback": "A",
+    "link": "https://www.instagram.com/ashishhikr/",
+    "content": "Great to see these clean n minimal designs here at the platform and also are beginner friendly and easy to integrate 🙌"
+  }
+]

@@ -4,6 +4,7 @@ import Language from "./components/language"
 import Contact from "./components/contact"
 import Footer from "./components/footer"
 import { BottomNavbar } from "./components/bottom-navbar"
+import Testimonial from "./components/testimonial"
 
 export default async function Home() {
   return (
@@ -15,6 +16,7 @@ export default async function Home() {
         <Language />
         <Contact />
         <BottomNavbar />
+        <Testimonial />
         <Footer />
       </div>
     </main>

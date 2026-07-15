@@ -46,7 +46,7 @@ export default function Contact() {
     <div id="contact" className="flex flex-col w-full relative pb-5">
       {/* Contact Header */}
       <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />
-      <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 justify-start px-3 flex items-center mb-6">
+      <div className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#8b8b8b] dark:text-[#d0d0d0] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 justify-start px-3 flex items-center mb-6">
         contact me
       </div>
 
@@ -131,7 +131,7 @@ export default function Contact() {
 
         {/* buttons */}
         <div className="flex flex-row gap-x-5">
-          <button onClick={() => window.open('https://cal.com/atharv-rem', '_blank')} className="flex items-center justify-center bg-[#f5f5f5] dark:bg-[#353535] gap-2 w-full py-3 px-4 rounded-xl text-[15px] text-black dark:text-white font-open font-medium border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 py-2 w-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none">
+          <button onClick={() => window.open('https://cal.com/atharv-rem', '_blank')} className="flex items-center justify-center bg-[#f5f5f5] dark:bg-[#353535] gap-2 w-full py-3 px-4 rounded-xl text-[15px] text-black dark:text-white font-open font-medium border border-neutral-200 dark:border-neutral-800 rounded-xl px-3 py-2 w-full hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none" data-tone-tap>
           <Image
             src="/tea_dark.svg"
             alt="Contact Image"
@@ -154,6 +154,7 @@ export default function Contact() {
             type="submit"
             disabled={status === "loading"}
             className="w-full py-3 px-4 rounded-xl text-black dark:text-white border font-open text-[15px] font-medium bg-[#f5f5f5] dark:bg-[#353535] hover:bg-neutral-100 border-neutral-200 dark:border-neutral-800 dark:hover:bg-neutral-800 transition-colors cursor-pointer select-none flex items-center justify-center gap-2 disabled:opacity-50"
+            data-tone-droplet
           >
             {status === "loading" ? (
               <>

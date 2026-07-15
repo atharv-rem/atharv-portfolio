@@ -29,22 +29,22 @@ export function BottomNavbar() {
       }
 
       const githubHeader = document.getElementById("github-header");
-      const contactElement = document.getElementById("contact");
+      const testimonialElement = document.getElementById("testimonial");
 
-      if (!githubHeader || !contactElement) return;
+      if (!githubHeader || !testimonialElement) return;
 
       const githubRect = githubHeader.getBoundingClientRect();
-      const contactRect = contactElement.getBoundingClientRect();
+      const testimonialRect = testimonialElement.getBoundingClientRect();
 
       // Immediately appear when the header of github page is on screen
       const githubOnScreenOrPast = githubRect.top < window.innerHeight;
 
-      // Hide when you reach the end of the contact page
-      const reachedEndOfContact =
-        contactRect.bottom <= window.innerHeight + 120 ||
+      // Hide when you reach the middle of the testimonial section
+      const reachedMiddleOfTestimonial =
+        testimonialRect.top + testimonialRect.height / 2 <= window.innerHeight ||
         (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 20);
 
-      if (githubOnScreenOrPast && !reachedEndOfContact) {
+      if (githubOnScreenOrPast && !reachedMiddleOfTestimonial) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -117,6 +117,7 @@ export function BottomNavbar() {
                     onHoverEnd={() => setHoveredIndex(null)}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center gap-1.5 p-2 rounded-[6px] cursor-pointer select-none bg-transparent hover:bg-neutral-100/60 dark:hover:bg-neutral-900/60 transition-colors"
+                    data-tone-tap
                   >
                     <motion.img
                       layout
@@ -151,6 +152,7 @@ export function BottomNavbar() {
               onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
               className="flex items-center justify-center p-2 rounded-[6px] cursor-pointer focus:outline-none bg-transparent hover:bg-neutral-100/60 dark:hover:bg-neutral-900/60 transition-colors"
               aria-label="Toggle dark mode"
+              data-tone-click
             >
               {mounted ? (
                 resolvedTheme === "dark" ? (

@@ -10,7 +10,7 @@ export default async function GitHubPage() {
   return (
     <div className="flex flex-col w-full relative">
         <div className="relative left-1/2 -translate-x-1/2 h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800" />
-        <div id="github-header" className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#cfcfcf] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3 leading-none">
+        <div id="github-header" className="relative left-1/2 -translate-x-1/2 uppercase font-open text-[12px] text-[#8b8b8b] dark:text-[#d0d0d0] bg-white dark:bg-neutral-900 w-[calc(100%+2rem)] h-[30px] max-w-[450px] border-b border-l border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3 leading-none">
           stats
         </div>
         <div className="w-full max-w-[450px] mt-4 flex flex-col">
@@ -38,7 +38,7 @@ export default async function GitHubPage() {
                       height={14}
                       className="hidden dark:block object-contain"
                     />
-                    <p className="text-[12px] text-black dark:text-neutral-500 font-open">
+                    <p className="text-[12px] text-black dark:text-[#bcbcbc] font-open">
                       recent contribution
                     </p>
                   </div>
@@ -64,12 +64,12 @@ export default async function GitHubPage() {
                         <p className="text-[12px] font-bold text-neutral-800 dark:text-neutral-100 font-open">
                           {repo.name}
                         </p>
-                        <span className="font-mono text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded text-neutral-600 dark:text-neutral-350">
+                        <span className="font-mono text-xs font-semibold bg-neutral-100 dark:bg-neutral-800 px-2 py-0.5 rounded text-neutral-600 dark:text-[#bcbcbc]">
                           {commit.oid.slice(0, 7)}
                         </span>
                       </div>
                       <div className="flex items-center">
-                        <p className="text-[12px] text-neutral-700 dark:text-neutral-300 font-open">
+                        <p className="text-[12px] text-neutral-700 dark:text-[#bcbcbc] font-open">
                           {commitDate.toLocaleString("en-US", {
                             month: "short",
                             day: "numeric",
