@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip"
 
 const heuvel = localFont({
-  src:"./assets/font/Heuvel grotesk.woff2",
+  src:"./assets/font/heuvel-grotesk.woff2",
   display: "swap",
   variable: "--font-heuvel",
 });
@@ -14,12 +14,12 @@ const heuvel = localFont({
 const opensauce = localFont({
   src: [
     {
-      path: "./assets/font/open sauce.woff2",
+      path: "./assets/font/open-sauce.woff2",
       weight: "400",
       style: "normal"
     },
     {
-      path: "./assets/font/open sauce bold.woff2",
+      path: "./assets/font/open-sauce-bold.woff2",
       weight: "700",
       style: "normal"
     }

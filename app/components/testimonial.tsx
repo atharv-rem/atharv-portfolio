@@ -21,11 +21,11 @@ export default function Testimonial() {
             </div>
             
             {/* We coordinate layout shifts, using margin-bottom on children instead of container gap to avoid sudden padding jumps */}
-            <motion.div layout className="flex flex-col w-full max-w-[450px] px-4 py-6">
+            <motion.div layout className="flex flex-col w-full max-w-[450px] px-2 py-6">
                 {/* First Testimonial: Always fully visible */}
                 <motion.div 
                     layout
-                    className="bg-[#f9f9f9] dark:bg-[#232323] flex flex-col gap-4 items-start justify-center border border-neutral-200 dark:border-neutral-800 p-3 w-full rounded-[10px] relative overflow-hidden h-auto mb-4"
+                    className="bg-[#f9f9f9] dark:bg-[#232323] flex flex-col gap-4 items-start justify-center border border-neutral-200 dark:border-neutral-800 p-5 w-full rounded-[10px] relative overflow-hidden h-auto mb-4"
                 >
                     <div className="flex items-center justify-end w-full">
                         <Image
@@ -43,7 +43,7 @@ export default function Testimonial() {
                             className="hidden dark:block object-contain"
                         />
                     </div>
-                    <p className="text-[12px] text-neutral-700 dark:text-[#bcbcbc] font-open">
+                    <p className="text-[13px] leading-[17px] text-neutral-700 dark:text-[#bcbcbc] font-open text-justify">
                         {testimonialData[0].content}
                     </p>
                     <div className="flex flex-col items-start justify-center">
@@ -97,7 +97,7 @@ export default function Testimonial() {
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             className="overflow-hidden w-full"
                         >
-                            <div className="bg-[#f9f9f9] dark:bg-[#232323] flex flex-col gap-4 items-start justify-center border border-neutral-200 dark:border-neutral-800 p-3 w-full rounded-[10px] relative mb-4">
+                            <div className="bg-[#f9f9f9] dark:bg-[#232323] flex flex-col gap-4 items-start justify-center border border-neutral-200 dark:border-neutral-800 p-5 w-full rounded-[10px] relative mb-4">
                                 <div className="flex items-center justify-end w-full">
                                     <Image
                                         src={quote_light}
@@ -114,7 +114,7 @@ export default function Testimonial() {
                                         className="hidden dark:block object-contain"
                                     />
                                 </div>
-                                <p className="text-[12px] text-neutral-700 dark:text-[#bcbcbc] font-open">
+                                <p className="text-[13px] leading-[17px] text-justify text-neutral-700 dark:text-[#bcbcbc] font-open">
                                     {testimonial.content}
                                 </p>
                                 <div className="flex flex-col items-start justify-center">
