@@ -30,25 +30,24 @@ export default function Footer() {
     <footer className="w-full h-auto flex flex-col items-center justify-center border-neutral-200 dark:border-neutral-800 relative">
       <div className="h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
       <div className="flex flex-col items-start justify-center w-full py-3 space-y-1 mb-[20px]">
-        <div className="flex flex-row items-center justify-center gap-2">
-            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">I live in </p>
+        <div className="flex flex-wrap items-center justify-start gap-x-1.5 gap-y-1 w-full">
+            <span className="text-[15px] font-open text-neutral-400">I live in</span>
             <Image
               src={mounted && resolvedTheme === "dark" ? mumbaiDark : mumbaiLight}
               alt="Mumbai"
-              width={24}
-              height={24}
-              className="object-contain"
-              style={{ width: "auto", height: "auto" }}
+              width={20}
+              height={20}
+              className="object-contain shrink-0 h-[25px] w-auto"
             />
-            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">Mumbai and work in </p>
+            <span className="text-[15px] font-open text-neutral-400">Mumbai and work in</span>
             <Image
               src={mounted && resolvedTheme === "dark" ? blr_dark : blr_light}
               alt="Bangalore"
-              width={40}
-              height={40}
-              className="object-contain"
+              width={32}
+              height={20}
+              className="object-contain shrink-0 h-[25px] w-auto"
             />
-            <p className="text-[15px] font-open text-neutral-400 mt-[5px]">Bangalore</p>
+            <span className="text-[15px] font-open text-neutral-400">Bangalore</span>
         </div>
         <div>
           {mounted && now ? (

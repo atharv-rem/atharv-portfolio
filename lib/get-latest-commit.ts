@@ -53,9 +53,8 @@ export async function getLatestCommit() {
           username: `${process.env.GITHUB_USERNAME}`,
         },
       }),
-      cache: "no-store",
       next: {
-        revalidate: 0,
+        revalidate: 10800,
       },
       signal: AbortSignal.timeout(3000),
     });
