@@ -10,7 +10,7 @@ export default function GitHubPage() {
         </div>
         <div className="w-full max-w-[450px] mt-4 flex flex-col">
           <GithubContributions />
-          <LatestCommitCard />
+          {/* <LatestCommitCard /> */}
         </div>
     </div>
   );
