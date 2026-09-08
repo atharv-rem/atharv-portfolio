@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 export function GET() {
   const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "https://atharv-rem.vercel.app";
+    : "https://atharv.site";
 
   const robotsTxt = `User-agent: *
 Allow: /

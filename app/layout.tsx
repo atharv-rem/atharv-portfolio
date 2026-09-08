@@ -31,9 +31,11 @@ const opensauce = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.VERCEL_URL
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
-      : "https://atharv-rem.vercel.app"
+      : "https://atharv.site"
   ),
   title: {
     default: "Atharv Remeshan",
@@ -46,13 +48,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://github.com/atharv-rem",
+    url: "https://atharv.site",
     title: "Atharv Remeshan",
     description: "Full-stack developer building scalable products with a focus on product design, system architecture, and creating impactful user experiences.",
     siteName: "Atharv Remeshan",
     images: [
       {
-        url: "/og-image.avif",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Atharv Remeshan Portfolio",
@@ -64,7 +66,7 @@ export const metadata: Metadata = {
     title: "Atharv Remeshan",
     description: "Full-stack developer building scalable products with a focus on product design, system architecture, and creating impactful user experiences.",
     creator: "@atharv_rem",
-    images: ["/twitter-og-image.avif"],
+    images: ["/twitter-og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
