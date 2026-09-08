@@ -59,9 +59,9 @@ export function LatestCommitCard() {
       rel="noopener noreferrer"
       className="block hover:opacity-95 transition-opacity w-full"
     >
-      <div className="flex flex-col gap-3 w-full">
+      <div className="flex flex-col gap-2 w-full">
 
-        <div className="flex items-center gap-2 ml-[14px]">
+        <div className="flex items-center gap-2 ml-[11px]">
           <Image
             src="/commit_light.svg"
             alt="Git Activity Graphic"
@@ -81,7 +81,7 @@ export function LatestCommitCard() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-[10px] items-start justify-center border border-neutral-200 dark:border-neutral-800 rounded p-[15px] w-full rounded-[10px]">
+        <div className="flex flex-col gap-[10px] items-start justify-center border border-neutral-200 dark:border-neutral-800 rounded p-[12px] w-full rounded-[10px]">
           <div className="flex flex-col items-start justify-center gap-[10px]">
             <div className="flex flex-row justify-start items-center gap-2">
               <Image
