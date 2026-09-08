@@ -81,7 +81,7 @@ export function LatestCommitCard() {
           </p>
         </div>
 
-        <div className="flex flex-col gap-[10px] items-start justify-center border border-neutral-200 dark:border-neutral-800 rounded p-[12px] w-full rounded-[10px]">
+        <div className="flex flex-col gap-[10px] items-start justify-center border border-neutral-200 dark:border-neutral-800 p-[12px] w-full rounded-[10px] shadow-surface ring-hairline ring-black/6 dark:ring-white/10">
           <div className="flex flex-col items-start justify-center gap-[10px]">
             <div className="flex flex-row justify-start items-center gap-2">
               <Image
