@@ -40,7 +40,7 @@ export function LatestCommitCard() {
 
   if (loading || !repo) {
     return (
-      <div className="flex flex-col gap-3 p-2 w-full animate-pulse">
+      <div className="flex flex-col gap-3 w-full animate-pulse">
         <div className="h-4 w-32 bg-neutral-200 dark:bg-neutral-800 rounded"></div>
         <div className="h-20 w-full bg-neutral-200 dark:bg-neutral-800 rounded-[10px]"></div>
       </div>
@@ -59,9 +59,9 @@ export function LatestCommitCard() {
       rel="noopener noreferrer"
       className="block hover:opacity-95 transition-opacity w-full"
     >
-      <div className="flex flex-col gap-3 p-2 w-full">
+      <div className="flex flex-col gap-3 w-full">
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ml-[14px]">
           <Image
             src="/commit_light.svg"
             alt="Git Activity Graphic"
