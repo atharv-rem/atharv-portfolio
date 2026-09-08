@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useTheme } from "next-themes";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+const MotionLink = motion.create(Link);
 
 
 export function BottomNavbar() {
@@ -109,9 +112,10 @@ export function BottomNavbar() {
               {navItems.map((item, index) => {
                 const isHovered = hoveredIndex === index;
                 return (
-                  <motion.a
+                  <MotionLink
                     key={item.name}
                     href={item.url}
+                    prefetch={true}
                     layout
                     onHoverStart={() => setHoveredIndex(index)}
                     onHoverEnd={() => setHoveredIndex(null)}
@@ -139,7 +143,7 @@ export function BottomNavbar() {
                         </motion.span>
                       )}
                     </AnimatePresence>
-                  </motion.a>
+                  </MotionLink>
                 );
               })}
             </div>

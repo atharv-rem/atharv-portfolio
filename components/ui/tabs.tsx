@@ -78,10 +78,12 @@ export function TabsTab({
 
 export function TabsPanel({
   className,
+  keepMounted = true,
   ...props
 }: TabsPrimitive.Panel.Props): React.ReactElement {
   return (
     <TabsPrimitive.Panel
+      keepMounted={keepMounted}
       className={cn("flex-1 outline-none", className)}
       data-slot="tabs-content"
       {...props}

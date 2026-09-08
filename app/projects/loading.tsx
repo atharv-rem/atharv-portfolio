@@ -4,7 +4,7 @@ export default function Loading() {
       <div className="absolute inset-0 z-0" />
       <div className="bg-white dark:bg-neutral-900 flex flex-col items-start min-h-screen justify-start w-full max-w-[450px] px-4 border-l border-r border-neutral-200 dark:border-neutral-800 relative z-10 pb-24">
         {/* Hatch pattern header */}
-        <div className="h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
+        <div className="h-[20px] w-[calc(100%+2rem)] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
         
         {/* Page Title skeleton */}
         <div className="w-48 h-12 bg-neutral-200 dark:bg-neutral-800 rounded-md animate-pulse mt-4 mb-6" />

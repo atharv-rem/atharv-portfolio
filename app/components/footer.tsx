@@ -28,7 +28,7 @@ export default function Footer() {
 
   return (
     <footer className="w-full h-auto flex flex-col items-center justify-center border-neutral-200 dark:border-neutral-800 relative">
-      <div className="h-[20px] w-[calc(100%+2rem)] max-w-[450px] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
+      <div className="h-[20px] w-[calc(100%+2rem)] pattern-hatch border-b border-t border-neutral-200 dark:border-neutral-800 -mx-4" />
       <div className="flex flex-col items-start justify-center w-full py-3 space-y-1 mb-[20px]">
         <div className="flex flex-wrap items-center justify-start gap-x-1.5 gap-y-1 w-full">
             <span className="text-[15px] font-open text-neutral-400">I live in</span>
