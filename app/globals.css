@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
+/* Generate the utility classes used by xiod-ui components. Its own token
+   stylesheet is skipped so the existing shadcn tokens below stay in control. */
+@source "../node_modules/xiod-ui/dist/components/message.js";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

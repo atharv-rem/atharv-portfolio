@@ -67,14 +67,14 @@ export function LatestCommitCard() {
             alt="Git Activity Graphic"
             width={18}
             height={18}
-            className="block dark:hidden object-contain"
+            className="block dark:hidden object-contain shrink-0"
           />
           <Image
             src="/commit_dark.svg"
             alt="Git Activity Graphic"
             width={18}
             height={18}
-            className="hidden dark:block object-contain"
+            className="hidden dark:block object-contain shrink-0"
           />
           <p className="text-[13px] text-black dark:text-[#bcbcbc] font-open">
             recent contribution
@@ -89,7 +89,7 @@ export function LatestCommitCard() {
                 alt="Repository Icon"
                 width={14}
                 height={14}
-                className="block dark:hidden object-contain"
+                className="block dark:hidden object-contain shrink-0"
                 style={{ width: "auto", height: "auto" }}
               />
               <Image
@@ -97,45 +97,45 @@ export function LatestCommitCard() {
                 alt="Repository Icon"
                 width={14}
                 height={14}
-                className="hidden dark:block object-contain"
+                className="hidden dark:block object-contain shrink-0"
                 style={{ width: "auto", height: "auto" }}
               />
               <p className="text-[14px] font-bold text-neutral-800 dark:text-neutral-100 font-open">
                 {repo.name}
               </p>
             </div>
-            <div className="flex flex-row items-center gap-[10px]">
-              <span className="font-open flex flex-row gap-[5px]  text-[10px] sm:text-[12px] font-semibold bg-neutral-100 dark:bg-neutral-800 px-2 py-[5.5px] sm:py-1 text-neutral-600 dark:text-[#bcbcbc] rounded-[6px]">
+            <div className="flex flex-row flex-nowrap items-center gap-[6px] max-w-full">
+              <span className="font-open flex flex-row items-center whitespace-nowrap gap-[4px] text-[10px] sm:text-[10.5px] font-semibold bg-neutral-100 dark:bg-neutral-800 px-1.5 py-1 text-neutral-600 dark:text-[#bcbcbc] rounded-[6px]">
                 <Image
                   src="/commit_light.svg"
                   alt="Commit Hash Icon"
-                  width={15}
-                  height={15}
-                  className="block dark:hidden object-contain"
+                  width={12}
+                  height={12}
+                  className="block dark:hidden object-contain shrink-0"
                 />
                 <Image
                   src="/commit_dark.svg"
                   alt="Commit Hash Icon"
-                  width={15}
-                  height={15}
-                  className="hidden dark:block object-contain"
+                  width={12}
+                  height={12}
+                  className="hidden dark:block object-contain shrink-0"
                 />
                 {commit.oid.slice(0, 7)}
               </span>
-              <p className="items-center justify-center flex flex-row gap-[5px] text-[10px] sm:text-[12px] text-[#6f4cdc] dark:text-[#8F6FEF] font-open font-semibold bg-[#efe9ff] dark:bg-[#211C33] px-2 py-[5.5px] sm:py-1 rounded-[6px]">
+              <p className="items-center justify-center flex flex-row whitespace-nowrap gap-[4px] text-[10px] sm:text-[10.5px] text-[#6f4cdc] dark:text-[#8F6FEF] font-open font-semibold bg-[#efe9ff] dark:bg-[#211C33] px-1.5 py-1 rounded-[6px]">
                 <Image
                   src="/calendar_light.svg"
                   alt="Calendar Icon"
-                  width={14}
-                  height={14}
-                  className="block dark:hidden object-contain"
+                  width={12}
+                  height={12}
+                  className="block dark:hidden object-contain shrink-0"
                 />
                 <Image
                   src="/calendar_dark.svg"
                   alt="Calendar Icon"
-                  width={14}
-                  height={14}
-                  className="hidden dark:block object-contain"
+                  width={12}
+                  height={12}
+                  className="hidden dark:block object-contain shrink-0"
                 />
                 <span className="sm:hidden">
                   {commitDate.toLocaleString("en-US", {
@@ -155,20 +155,20 @@ export function LatestCommitCard() {
                   })}
                 </span>
               </p>
-              <p className="text-[10px] sm:text-[12px] gap-[5px] flex flex-row  text-[#a53935] dark:text-[#EB6F68] font-open font-semibold bg-[#ffeeec] dark:bg-[#2F2120] px-2 py-[5.5px] sm:py-1 rounded-[6px]">
+              <p className="text-[10px] sm:text-[10.5px] gap-[4px] flex flex-row items-center whitespace-nowrap text-[#a53935] dark:text-[#EB6F68] font-open font-semibold bg-[#ffeeec] dark:bg-[#2F2120] px-1.5 py-1 rounded-[6px]">
                 <Image
                   src="/calendar2_light.svg"
                   alt="Clock Icon"
-                  width={14}
-                  height={14}
-                  className="block dark:hidden object-contain"
+                  width={12}
+                  height={12}
+                  className="block dark:hidden object-contain shrink-0"
                 />
                 <Image
                   src="/calendar2_dark.svg"
                   alt="Clock Icon"
-                  width={14}
-                  height={14}
-                  className="hidden dark:block object-contain"
+                  width={12}
+                  height={12}
+                  className="hidden dark:block object-contain shrink-0"
                 />  
                 {formatDistanceToNow(new Date(commit.committedDate), {
                   addSuffix: true,

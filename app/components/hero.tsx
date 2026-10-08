@@ -1,13 +1,14 @@
 "use client";
 
 // removed SVG imports
-import { DitherShader } from "@/components/ui/dither-shader";
-import {motion} from "motion/react"
-import {useState,useEffect} from "react";
+import {motion, useMotionValue, useSpring} from "motion/react"
+import {useState,useEffect,useRef} from "react";
 import { useTheme } from "next-themes";
 import LoadingThreeDotsJumping from "./loading-dots";
 import Image from "next/image";
 import { ResumeDrawer } from "./resume-drawer";
+import { Mascot } from "page-mascot";
+import { Message, MessageContent, Bubble, BubbleContent } from "xiod-ui/message";
 
 const segments = [
   ["Full-stack ", true],
@@ -43,6 +44,33 @@ export default function Hero() {
   const [country, setCountry] = useState("");
   const [greeting, setGreeting] = useState("Good morning");
   const { resolvedTheme } = useTheme();
+  const mascotRef = useRef<HTMLDivElement>(null);
+  const bubbleX = useSpring(useMotionValue(0), { stiffness: 120, damping: 18 });
+  const bubbleY = useSpring(useMotionValue(0), { stiffness: 120, damping: 18 });
+
+  // Drift the bubble a few px toward the cursor, in step with the mascot's head turn.
+  useEffect(() => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const MAX_X = 10;
+    const MAX_Y = 6;
+    const REACH = 300;
+
+    const follow = (event: PointerEvent) => {
+      const box = mascotRef.current?.getBoundingClientRect();
+      if (!box) return;
+      const dx = event.clientX - (box.left + box.width / 2);
+      const dy = event.clientY - (box.top + box.height / 2);
+      const dist = Math.hypot(dx, dy) || 1;
+      const strength = Math.min(1, dist / REACH);
+      bubbleX.set((dx / dist) * strength * MAX_X);
+      bubbleY.set((dy / dist) * strength * MAX_Y);
+    };
+
+    window.addEventListener("pointermove", follow, { passive: true });
+    return () => window.removeEventListener("pointermove", follow);
+  }, [bubbleX, bubbleY]);
 
   const isDark = resolvedTheme === "dark";
 
@@ -84,53 +112,50 @@ export default function Hero() {
   }, []);
   
   return (
-    <div className="flex flex-col items-left justify-end h-screen w-full relative" > 
+    <div className="flex flex-col items-left justify-end h-screen w-full relative" >
         <div className="absolute top-0 -left-4 z-20 h-[20px] w-[calc(100%+2rem)] pattern-hatch border-b border-neutral-200 dark:border-neutral-800" />
         <div className="absolute uppercase top-[20px] -left-4 font-open text-[12px] text-[#8b8b8b] dark:text-[#d0d0d0] bg-white dark:bg-neutral-900 z-10 w-[calc(100%+2rem)] h-[30px] border-b border-neutral-200 dark:border-neutral-800 flex items-center justify-start px-3">
           intro
         </div>
         <div className="relative">
-          <div className="absolute top-8 left-[140px] z-10">
-            <div className="relative bg-white dark:bg-neutral-900 rounded-[80px] px-4 shadow-md border border-neutral-200 dark:border-neutral-800 border-2 text-[#3b3b3b] dark:text-neutral-200 font-open min-h-[38px] min-w-[80px] flex items-center justify-center">
-              {isLoading ? (
-                <LoadingThreeDotsJumping />
-              ) : (
-                <span className="whitespace-nowrap flex items-center gap-1.5">
-                  {city ? (
-                    <span className="flex items-center gap-1.5">
-                      Hi visitor from {city}
-                      {country && (
-                        <img
-                          src={`https://flagcdn.com/16x12/${country}.png`}
-                          width="16"
-                          height="12"
-                          alt=""
-                          className="rounded-xs object-contain inline-block align-middle"
-                        />
-                      )}
-                    </span>
-                  ) : (
-                    greeting
-                  )}
-                </span>
-              )}
+          <motion.div
+            style={{ x: bubbleX, y: bubbleY }}
+            className="absolute top-1/2 -translate-y-1/2 left-[135px] z-0"
+          >
+            <Message className="w-auto">
+              <MessageContent className="w-auto">
+                <Bubble variant="outline" className="max-w-none">
+                  <BubbleContent className="flex min-h-[38px] min-w-[80px] items-center justify-center rounded-xl border-2 px-5 py-2 font-open shadow-md whitespace-nowrap">
+                    {isLoading ? (
+                      <LoadingThreeDotsJumping />
+                    ) : city ? (
+                      <span className="flex items-center gap-1.5">
+                        Hi visitor from {city}
+                        {country && (
+                          <img
+                            src={`https://flagcdn.com/16x12/${country}.png`}
+                            width="16"
+                            height="12"
+                            alt=""
+                            className="rounded-xs object-contain inline-block align-middle"
+                          />
+                        )}
+                      </span>
+                    ) : (
+                      greeting
+                    )}
+                  </BubbleContent>
+                </Bubble>
+              </MessageContent>
+            </Message>
+          </motion.div>
 
-              <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 bg-white dark:bg-neutral-900 rotate-45 border-l border-b border-neutral-200 dark:border-neutral-800" />
-            </div>
-          </div>
-
-          <div className="relative overflow-hidden rounded-[10px] border-[2px] border-[#9f9f9f] dark:border-neutral-800 w-[150px] h-[150px] mb-2 hero-image-shadow ml-[10px]">
-            <DitherShader
-              src="/hero image.avif"
-              gridSize={1}
-              ditherMode="bayer"
-              colorMode="grayscale"
-              invert={false}
-              animated={false}
-              animationSpeed={0.02}
-              primaryColor={isDark ? "#ffffff" : "#000000"}
-              secondaryColor={isDark ? "#171717" : "#f5f5f5"}
-              threshold={0.5}
+          <div ref={mascotRef} className="relative z-10 -mb-2 -ml-4">
+            <Mascot
+              directions="/mascots/atharv-directions.webp"
+              reactions="/mascots/atharv-reactions.webp"
+              size={220}
+              label="Atharv"
             />
           </div>
         </div>

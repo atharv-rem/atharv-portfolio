@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# mascot source art and agent skills (local only)
+/characters/
+/.agents/
+/.codex/
+/.claude/skills/

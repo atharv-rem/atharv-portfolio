@@ -1,5 +1,4 @@
 import { unstable_cache } from "next/cache";
-import { formatDistanceToNow } from "date-fns";
 
 type GitHubCommit = {
   oid: string;
@@ -17,8 +16,6 @@ type GitHubRepository = {
   defaultBranchRef: {
     target: GitHubCommit;
   } | null;
-  createdAtFormatted?: string;
-  committedDateFormatted?: string;
 };
 
 type GitHubProjectsResponse = {
@@ -69,7 +66,12 @@ const FEATURED = {
   "opacity": ["typescript", "next.js"],
   "casp": ["typescript", "go", "next.js", "redis", "postgres", "electricsql", "tanstack"],
   "design-index-3.0": ["astro", "typescript", "redis"],
-  "compare-ai": ["typescript"], 
+  "compare-models": ["typescript"],
+};
+
+// Repos that live outside the user account (the GraphQL user query can't see them)
+const REPO_OWNERS: Record<string, string> = {
+  opacity: "Opacity-HQ",
 };
 
 const EXPERIMENTAL = {
@@ -86,12 +88,12 @@ const FALLBACK_PROJECT_DATA = {
       description: "A project focused on creating polished, expressive web experiences.",
       url: "https://github.com/Opacity-HQ/opacity",
       homepageUrl: "https://opacity.atharv.site",
-      createdAt: "2024-04-01T00:00:00Z",
+      createdAt: "2026-08-18T08:10:52Z",
       defaultBranchRef: {
         target: {
-          oid: "main",
-          message: "update",
-          committedDate: "2026-04-01T00:00:00Z",
+          oid: "c4f633d",
+          message: "fix: ensure correct phase return value in useCyclePhase and reset step in useSteppedCycle when inactive",
+          committedDate: "2026-10-07T16:50:30Z",
         },
       },
       languagesList: FEATURED["opacity"],
@@ -102,11 +104,11 @@ const FALLBACK_PROJECT_DATA = {
       description: "Local-first application for managing personal records and documents.",
       url: "https://github.com/atharv-rem/casp",
       homepageUrl: null,
-      createdAt: "2024-01-01T00:00:00Z",
+      createdAt: "2025-11-02T01:57:42Z",
       defaultBranchRef: {
         target: {
           oid: "caa4dc7",
-          message: "fix: layout and record management updates",
+          message: "fix: add gap between grid items in RecordDetailsSheet for improved layout",
           committedDate: "2026-05-25T03:23:25Z",
         },
       },
@@ -118,31 +120,31 @@ const FALLBACK_PROJECT_DATA = {
       description: "Curated design index and component showcase.",
       url: "https://github.com/atharv-rem/design-index-3.0",
       homepageUrl: "https://designindex.xyz",
-      createdAt: "2024-02-01T00:00:00Z",
+      createdAt: "2026-02-01T05:48:38Z",
       defaultBranchRef: {
         target: {
-          oid: "e8b2f1a",
-          message: "feat: add design system references",
-          committedDate: "2026-04-12T10:00:00Z",
+          oid: "ed67cbf",
+          message: "feat: add funding model support and include a Code of Conduct and LICENSE file",
+          committedDate: "2026-10-07T05:43:08Z",
         },
       },
       languagesList: FEATURED["design-index-3.0"],
     },
     {
-      id: "compare-ai",
-      name: "compare-ai",
-      description: "Tool to compare outputs and latency of LLM providers.",
-      url: "https://github.com/atharv-rem/compare-ai",
+      id: "compare-models",
+      name: "compare-models",
+      description: "Compare two AI models on their generated output.",
+      url: "https://github.com/atharv-rem/compare-models",
       homepageUrl: "https://comp.atharv.site",
-      createdAt: "2024-03-01T00:00:00Z",
+      createdAt: "2026-05-16T10:47:15Z",
       defaultBranchRef: {
         target: {
-          oid: "9a3f4e2",
-          message: "feat: benchmarking model endpoints",
-          committedDate: "2026-03-10T00:00:00Z",
+          oid: "34e074c",
+          message: "feat: implement alert management with timeout handling and cleanup",
+          committedDate: "2026-05-19T17:28:31Z",
         },
       },
-      languagesList: FEATURED["compare-ai"],
+      languagesList: FEATURED["compare-models"],
     },
   ],
   experimental: [
@@ -152,12 +154,12 @@ const FALLBACK_PROJECT_DATA = {
       description: "Previous iteration of design-index built with React Router.",
       url: "https://github.com/atharv-rem/design-index-2.0",
       homepageUrl: null,
-      createdAt: "2023-08-01T00:00:00Z",
+      createdAt: "2025-09-21T15:31:34Z",
       defaultBranchRef: {
         target: {
-          oid: "b1c2d3e",
-          message: "initial release",
-          committedDate: "2023-09-01T00:00:00Z",
+          oid: "047e5de",
+          message: "feat: remove Databuddy script from Layout component",
+          committedDate: "2026-05-23T16:31:32Z",
         },
       },
       languagesList: EXPERIMENTAL["design-index-2.0"],
@@ -168,12 +170,12 @@ const FALLBACK_PROJECT_DATA = {
       description: "API wrapper experiment.",
       url: "https://github.com/atharv-rem/open-wrapper",
       homepageUrl: null,
-      createdAt: "2023-09-01T00:00:00Z",
+      createdAt: "2026-05-25T17:41:07Z",
       defaultBranchRef: {
         target: {
-          oid: "f5e4d3c",
-          message: "refactor wrapper interface",
-          committedDate: "2023-10-01T00:00:00Z",
+          oid: "bff8100",
+          message: "feat: add README.md with project overview, features, and setup instructions",
+          committedDate: "2026-05-26T15:46:29Z",
         },
       },
       languagesList: EXPERIMENTAL["open-wrapper"],
@@ -184,12 +186,12 @@ const FALLBACK_PROJECT_DATA = {
       description: "Python utility to extract keywords from websites.",
       url: "https://github.com/atharv-rem/get-website-keywords",
       homepageUrl: null,
-      createdAt: "2023-10-01T00:00:00Z",
+      createdAt: "2025-06-03T11:31:44Z",
       defaultBranchRef: {
         target: {
-          oid: "a1b2c3d",
-          message: "add TF-IDF keyword extractor",
-          committedDate: "2023-11-01T00:00:00Z",
+          oid: "0929b79",
+          message: ".final",
+          committedDate: "2025-06-04T10:10:18Z",
         },
       },
       languagesList: EXPERIMENTAL["get-website-keywords"],
@@ -199,22 +201,91 @@ const FALLBACK_PROJECT_DATA = {
 
 const IN_PROGRESS_REPOS = new Set(["casp", "opacity"]);
 
-function attachFormattedDates(projects: { featured: any[]; experimental: any[] }) {
-  const formatRepo = (repo: any) => ({
+function attachInProgress(projects: { featured: any[]; experimental: any[] }) {
+  const markRepo = (repo: any) => ({
     ...repo,
     inProgress: IN_PROGRESS_REPOS.has(repo.name.toLowerCase()),
-    createdAtFormatted: repo.createdAt
-      ? formatDistanceToNow(new Date(repo.createdAt), { addSuffix: true })
-      : "",
-    committedDateFormatted: repo.defaultBranchRef?.target?.committedDate
-      ? formatDistanceToNow(new Date(repo.defaultBranchRef.target.committedDate), { addSuffix: true })
-      : "",
   });
 
   return {
-    featured: projects.featured.map(formatRepo),
-    experimental: projects.experimental.map(formatRepo),
+    featured: projects.featured.map(markRepo),
+    experimental: projects.experimental.map(markRepo),
   };
+}
+
+async function fetchRepoREST(owner: string, name: string): Promise<GitHubRepository | null> {
+  const headers = { "User-Agent": "Mozilla/5.0" };
+  const next = { revalidate: 3600, tags: ["projects"] };
+
+  const repoRes = await fetch(`https://api.github.com/repos/${owner}/${name}`, {
+    headers,
+    next,
+    signal: AbortSignal.timeout(4000),
+  });
+  if (!repoRes.ok) return null;
+  const repo = await repoRes.json();
+
+  let commitTarget: GitHubCommit | null = null;
+  try {
+    const commitRes = await fetch(`https://api.github.com/repos/${owner}/${name}/commits?per_page=1`, {
+      headers,
+      next,
+      signal: AbortSignal.timeout(3000),
+    });
+    if (commitRes.ok) {
+      const commits = await commitRes.json();
+      if (Array.isArray(commits) && commits.length > 0) {
+        commitTarget = {
+          oid: commits[0].sha,
+          message: commits[0].commit?.message || "update",
+          committedDate: commits[0].commit?.committer?.date || commits[0].commit?.author?.date || repo.pushed_at,
+        };
+      }
+    }
+  } catch {
+    // Ignore commit fetch error, fallback below
+  }
+
+  return {
+    id: repo.node_id || repo.id.toString(),
+    name: repo.name as string,
+    description: repo.description as string | null,
+    url: repo.html_url as string,
+    homepageUrl: (repo.homepage || null) as string | null,
+    createdAt: repo.created_at as string,
+    defaultBranchRef: {
+      target: commitTarget ?? { oid: "main", message: "update", committedDate: repo.pushed_at || repo.created_at },
+    },
+  };
+}
+
+function buildProjects(available: GitHubRepository[]) {
+  const resolve = (group: Record<string, string[]>, fallbacks: { name: string; homepageUrl: string | null }[]) =>
+    Object.keys(group)
+      .map((name) => {
+        const fallback = fallbacks.find((f) => f.name.toLowerCase() === name.toLowerCase());
+        const found = available.find((repo) => repo.name.toLowerCase() === name.toLowerCase());
+        if (found) {
+          return {
+            ...found,
+            homepageUrl: found.homepageUrl || fallback?.homepageUrl || null,
+            languagesList: group[name] || [],
+          };
+        }
+        return fallback || null;
+      })
+      .filter(Boolean);
+
+  return {
+    featured: resolve(FEATURED, FALLBACK_PROJECT_DATA.featured),
+    experimental: resolve(EXPERIMENTAL, FALLBACK_PROJECT_DATA.experimental),
+  };
+}
+
+function fetchRepos(username: string, names: string[]) {
+  return Promise.all(
+    names.map((name) => fetchRepoREST(REPO_OWNERS[name.toLowerCase()] ?? username, name).catch(() => null))
+  ).then((repos) => repos.filter((r): r is GitHubRepository => r !== null));
 }
 
 async function fetchProjectsFromGraphQL(username: string, token: string) {
@@ -238,122 +309,17 @@ async function fetchProjectsFromGraphQL(username: string, token: string) {
   const data = json.data as GitHubProjectsResponse;
   const repos = data?.user?.repositories?.nodes || [];
 
-  const featured = Object.keys(FEATURED).map((name) => {
-    const fallback = FALLBACK_PROJECT_DATA.featured.find((f) => f.name.toLowerCase() === name.toLowerCase());
-    const found = repos.find((repo) => repo.name.toLowerCase() === name.toLowerCase());
-    if (found) {
-      return {
-        ...found,
-        homepageUrl: found.homepageUrl || fallback?.homepageUrl || null,
-        languagesList: FEATURED[name as keyof typeof FEATURED] || [],
-      };
-    }
-    return fallback || null;
-  }).filter(Boolean);
+  // Org-owned repos aren't in the user query, so fetch any that are missing individually
+  const missing = [...Object.keys(FEATURED), ...Object.keys(EXPERIMENTAL)].filter(
+    (name) => !repos.some((repo) => repo.name.toLowerCase() === name.toLowerCase())
+  );
 
-  const experimental = Object.keys(EXPERIMENTAL).map((name) => {
-    const fallback = FALLBACK_PROJECT_DATA.experimental.find((e) => e.name.toLowerCase() === name.toLowerCase());
-    const found = repos.find((repo) => repo.name.toLowerCase() === name.toLowerCase());
-    if (found) {
-      return {
-        ...found,
-        homepageUrl: found.homepageUrl || fallback?.homepageUrl || null,
-        languagesList: EXPERIMENTAL[name as keyof typeof EXPERIMENTAL] || [],
-      };
-    }
-    return fallback || null;
-  }).filter(Boolean);
-
-  return { featured, experimental };
+  return buildProjects([...repos, ...(await fetchRepos(username, missing))]);
 }
 
 async function fetchProjectsFromREST(username: string) {
-  const response = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`, {
-    headers: { "User-Agent": "Mozilla/5.0" },
-    next: { revalidate: 3600, tags: ["projects"] },
-    signal: AbortSignal.timeout(4000),
-  });
-
-  if (!response.ok) return null;
-  const repos = await response.json();
-  if (!Array.isArray(repos)) return null;
-
-  const targetNames = new Set([...Object.keys(FEATURED), ...Object.keys(EXPERIMENTAL)].map((s) => s.toLowerCase()));
-  const matchedRepos = repos.filter((r: any) => targetNames.has(r.name?.toLowerCase()));
-
-  const repoDetails = await Promise.all(
-    matchedRepos.map(async (repo: any) => {
-      let commitTarget: GitHubCommit | null = null;
-      try {
-        const commitRes = await fetch(
-          `https://api.github.com/repos/${username}/${repo.name}/commits?per_page=1`,
-          {
-            headers: { "User-Agent": "Mozilla/5.0" },
-            next: { revalidate: 3600, tags: ["projects"] },
-            signal: AbortSignal.timeout(3000),
-          }
-        );
-        if (commitRes.ok) {
-          const commits = await commitRes.json();
-          if (Array.isArray(commits) && commits.length > 0) {
-            commitTarget = {
-              oid: commits[0].sha,
-              message: commits[0].commit?.message || "update",
-              committedDate: commits[0].commit?.committer?.date || commits[0].commit?.author?.date || repo.pushed_at,
-            };
-          }
-        }
-      } catch {
-        // Ignore commit fetch error, fallback below
-      }
-
-      if (!commitTarget) {
-        commitTarget = {
-          oid: "main",
-          message: "update",
-          committedDate: repo.pushed_at || repo.created_at,
-        };
-      }
-
-      return {
-        id: repo.node_id || repo.id.toString(),
-        name: repo.name,
-        description: repo.description,
-        url: repo.html_url,
-        homepageUrl: repo.homepage || null,
-        createdAt: repo.created_at,
-        defaultBranchRef: { target: commitTarget },
-      };
-    })
-  );
-
-  const featured = Object.keys(FEATURED).map((name) => {
-    const fallback = FALLBACK_PROJECT_DATA.featured.find((f) => f.name.toLowerCase() === name.toLowerCase());
-    const found = repoDetails.find((repo) => repo.name.toLowerCase() === name.toLowerCase());
-    if (found) {
-      return {
-        ...found,
-        homepageUrl: found.homepageUrl || fallback?.homepageUrl || null,
-        languagesList: FEATURED[name as keyof typeof FEATURED] || [],
-      };
-    }
-    return fallback || null;
-  }).filter(Boolean);
-
-  const experimental = Object.keys(EXPERIMENTAL).map((name) => {
-    const fallback = FALLBACK_PROJECT_DATA.experimental.find((e) => e.name.toLowerCase() === name.toLowerCase());
-    const found = repoDetails.find((repo) => repo.name.toLowerCase() === name.toLowerCase());
-    if (found) {
-      return {
-        ...found,
-        homepageUrl: found.homepageUrl || fallback?.homepageUrl || null,
-        languagesList: EXPERIMENTAL[name as keyof typeof EXPERIMENTAL] || [],
-      };
-    }
-    return fallback || null;
-  }).filter(Boolean);
-
-  return { featured, experimental };
+  const repos = await fetchRepos(username, [...Object.keys(FEATURED), ...Object.keys(EXPERIMENTAL)]);
+  return buildProjects(repos);
 }
 
 export const getProjects = unstable_cache(
@@ -365,7 +331,7 @@ export const getProjects = unstable_cache(
       try {
         const graphqlData = await fetchProjectsFromGraphQL(username, token);
         if (graphqlData && (graphqlData.featured.length > 0 || graphqlData.experimental.length > 0)) {
-          return attachFormattedDates(graphqlData);
+          return attachInProgress(graphqlData);
         }
       } catch {
         // Fallback to REST
@@ -375,14 +341,14 @@ export const getProjects = unstable_cache(
     try {
       const restData = await fetchProjectsFromREST(username);
       if (restData && (restData.featured.length > 0 || restData.experimental.length > 0)) {
-        return attachFormattedDates(restData);
+        return attachInProgress(restData);
       }
     } catch {
       // Fallback to static
     }
 
-    return attachFormattedDates(FALLBACK_PROJECT_DATA);
+    return attachInProgress(FALLBACK_PROJECT_DATA);
   },
-  ["get-portfolio-projects-v7"],
+  ["get-portfolio-projects-v8"],
   { revalidate: 3600, tags: ["projects", "get-portfolio-projects"] }
 );

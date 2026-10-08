@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { formatDistanceToNow } from "date-fns";
 import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 import Image from "next/image";
 import { 
@@ -64,6 +65,11 @@ function ProjectLanguagePill({ name }: { name: string }) {
         </span>
       );
   }
+}
+
+function formatRepoDate(repo: any): string {
+  const date = repo.defaultBranchRef?.target?.committedDate || repo.createdAt;
+  return date ? formatDistanceToNow(new Date(date), { addSuffix: true }) : "";
 }
 
 export function ProjectTabs({ featured, experimental }: { featured: any[]; experimental: any[] }) {
@@ -232,7 +238,7 @@ export function ProjectTabs({ featured, experimental }: { featured: any[]; exper
                           className="hidden dark:block object-contain"
                         />
                         <span className="font-open">
-                          {repo.committedDateFormatted}
+                          {formatRepoDate(repo)}
                         </span>
                       </p>
                     </div>
@@ -340,7 +346,7 @@ export function ProjectTabs({ featured, experimental }: { featured: any[]; exper
                           className="hidden dark:block object-contain"
                         />
                         <span className="font-open">
-                          {repo.committedDateFormatted || repo.createdAtFormatted}
+                          {formatRepoDate(repo)}
                         </span>
                       </p>
                     </div>
