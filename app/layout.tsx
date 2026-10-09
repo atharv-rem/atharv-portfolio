@@ -84,7 +84,7 @@ export default function RootLayout({  children,}: Readonly<{children: React.Reac
       <head>
         <script
           src="https://cdn.databuddy.cc/databuddy.js"
-          data-client-id="a61ec3c4-9d1e-4349-81d4-a70a31236005"
+          data-client-id="bcdeecc5-22fe-472e-a2cb-02a3f5b580f4"
           data-track-performance="false"
           crossOrigin="anonymous"
           async
