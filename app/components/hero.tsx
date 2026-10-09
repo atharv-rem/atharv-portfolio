@@ -119,25 +119,36 @@ export default function Hero() {
         </div>
         <div className="relative">
           <motion.div
-            style={{ x: bubbleX, y: bubbleY }}
-            className="absolute top-1/2 -translate-y-1/2 left-[135px] z-0"
+            style={{ x: bubbleX, y: bubbleY, transformOrigin: "left center" }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.2 }}
+            className="absolute top-1/2 -translate-y-1/2 left-[100px] z-0"
           >
             <Message className="w-auto">
               <MessageContent className="w-auto">
                 <Bubble variant="outline" className="max-w-none">
-                  <BubbleContent className="flex min-h-[38px] min-w-[80px] items-center justify-center rounded-xl border-2 px-5 py-2 font-open shadow-md whitespace-nowrap">
+                  {/* tail pointing back at the mascot */}
+                  <span
+                    aria-hidden
+                    className="absolute top-1/2 -left-[5px] z-10 size-2.5 -translate-y-1/2 rotate-45 border-b border-l border-border bg-background dark:border-neutral-700 dark:bg-neutral-800"
+                  />
+                  <BubbleContent className="flex min-h-[40px] min-w-[84px] items-center justify-center rounded-2xl border px-4 py-2 font-open text-[13px] shadow-[0_4px_14px_-4px_rgba(0,0,0,0.15)] dark:border-neutral-700! dark:bg-neutral-800! dark:text-neutral-100! dark:shadow-[0_6px_20px_-6px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.05)] whitespace-nowrap group-data-[align=start]/bubble:rounded-tl-2xl">
                     {isLoading ? (
                       <LoadingThreeDotsJumping />
                     ) : city ? (
-                      <span className="flex items-center gap-1.5">
-                        Hi visitor from {city}
+                      <span className="flex items-center gap-2">
+                        <span>
+                          Hi visitor from{" "}
+                          <span className="font-semibold">{city}</span>
+                        </span>
                         {country && (
                           <img
                             src={`https://flagcdn.com/16x12/${country}.png`}
                             width="16"
                             height="12"
                             alt=""
-                            className="rounded-xs object-contain inline-block align-middle"
+                            className="rounded-[2px] object-contain inline-block align-middle shadow-sm"
                           />
                         )}
                       </span>
@@ -150,11 +161,11 @@ export default function Hero() {
             </Message>
           </motion.div>
 
-          <div ref={mascotRef} className="relative z-10 -mb-2 -ml-4">
+          <div ref={mascotRef} className="relative z-10 -mb-2 -ml-4 grayscale dark:grayscale-0">
             <Mascot
               directions="/mascots/atharv-directions.webp"
               reactions="/mascots/atharv-reactions.webp"
-              size={220}
+              size={160}
               label="Atharv"
             />
           </div>

@@ -106,7 +106,7 @@ export function BottomNavbar() {
               opacity: { duration: 0.2 },
               y: { duration: 0.3, ease: "easeOut" }
             }}
-            className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-2.5 rounded-[10px] bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_8px_24px_rgba(0,0,0,0.06)] dark:shadow-[0_8px_24px_rgba(0,0,0,0.3)] w-auto max-w-[90vw]"
+            className="pointer-events-auto flex items-center justify-between gap-3 px-4 py-2.5 rounded-[10px] bg-white/70 dark:bg-black/70 backdrop-blur-xl border border-neutral-200/50 dark:border-neutral-800/50 shadow-[0_1px_2px_rgba(0,0,0,0.06),0_6px_16px_-2px_rgba(0,0,0,0.1),0_18px_40px_-8px_rgba(0,0,0,0.16)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.5),0_8px_20px_-4px_rgba(0,0,0,0.6),0_20px_48px_-8px_rgba(0,0,0,0.7),inset_0_1px_0_rgba(255,255,255,0.05)] w-auto max-w-[90vw]"
           >
             <div className="flex items-center justify-center gap-2">
               {navItems.map((item, index) => {
